@@ -12,5 +12,5 @@ function loadComponent(selector, file, callback) {
 
 // Load components on page load event
 document.addEventListener("DOMContentLoaded", () => {
-    //loadComponent("#window-container", "../../components/window.html");
+    loadComponent("#window-container", "../../components/window.html");
 });
