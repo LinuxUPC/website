@@ -1,4 +1,4 @@
-.window {
+.window-component {
     background: rgba(29, 29, 29, 0.75);
     width: 100%;
     height: 100%;
@@ -6,7 +6,7 @@
     position: relative;
 }
 
-.window > .window-controls {
+.window-controls {
     position: absolute;
     top: 6px;
     right: 6px;
