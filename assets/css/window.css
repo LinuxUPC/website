@@ -22,16 +22,28 @@
     height: 25px;
     border-radius: 50%;
     background: #131313;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.window-controls > .win-control img {
+    width: 100%;
+    height: 100%;
+}
+
+.win-control + .maximize-icon {
+    padding: 5px;
 }
 
 .window-controls > .win-control:hover {
     background: #3F3F3F;
 }
 
-.window-controls > .win-control + .close {
+.window-controls > .win-control + .close-icon {
     background: #EA5322;
 }
 
-.window-controls > .win-control + .close:hover {
+.window-controls > .win-control + .close-icon:hover {
     background: #f78f62;
 }
