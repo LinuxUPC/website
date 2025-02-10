@@ -12,7 +12,7 @@ function loadComponent(selector, file, callback) {
 
 // Load components on page load event
 document.addEventListener("DOMContentLoaded", () => {
-    loadComponent(".title-component", "../../components/title.html", () => {
-        loadComponent(".window-component", "../../components/window.html");
+    loadComponent(".title-component", "./components/title.html", () => {
+        loadComponent(".window-component", "./components/window.html");
     });
 });
