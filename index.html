@@ -15,10 +15,10 @@
           <h1>LinuxUPC</h1>
         </div>
         <div class="center">
-          <h1>2 Feb 10:01</h1>
+          <h1 id="top_datetime">2 Feb 10:01</h1>
         </div>
         <div class="right">
-          <a>
+          <a href="#">
             <img src="./assets/img/light_mode_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" alt="LIGHT MODE">
           </a>
           <a href="https://x.com/linuxUPC" target="_blank">
@@ -42,5 +42,27 @@
           
         </main>
       </div>
+
+      <script>
+        function updateDateTime() {
+          const dateTimeElement = document.getElementById('top_datetime');
+          const now = new Date();
+
+          // Diría que las fechas de Ubuntu salen más o menos así
+          const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+          const day = date.getDate();
+          const month = months[date.getMonth()];
+          const hours = date.getHours().toString().padStart(2, '0');
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+
+          dateTimeelement.textContent = `${day} ${month} ${hours}:${minutes}`;
+        }
+
+        setInterval(updateDateTime, 1000); 
+
+        updateDateTime();
+      </script>
+
     </body>
 </html>
