@@ -1,0 +1,69 @@
+@import url("../css/window.css");
+
+.title-component {
+    position: relative;
+    padding: 20px;
+}
+
+.title-component .window-component {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.title {
+   position: relative;
+   display: grid;
+   pointer-events: none;
+   grid-template-rows: 2fr 1fr;
+   align-items: center;
+   height: 100%;
+   z-index: 1;
+}
+
+.title > div:first-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+
+.title > div:first-child h1 {
+    font-family: Ubuntu;
+    font-style: normal; 
+    font-size: 80px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    text-transform: unset;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    align-self: center;
+}
+
+.title > div:first-child img {
+    height: 85px;
+    object-fit: contain;
+}
+
+.title > div:last-child h2 {
+    font-family: Ubuntu;
+    font-style: normal; 
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    text-transform: unset;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    align-self: center;
+    display: inline-block; 
+    width: 100%;
+}
