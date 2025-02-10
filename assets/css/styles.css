@@ -104,6 +104,7 @@ body {
 
 /* Barra Lateral */
 .sidebar {
+  flex-shrink: 0;
   width: 85px;
   background: rgba(29, 29, 29, 0.75);
   display: flex;
