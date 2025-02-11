@@ -99,7 +99,7 @@ body {
 /* Contenedor Principal */
 .container {
   display: flex;
-  height: 100%; /* Ocupar toda la pantalla */
+  height: calc(100% - 45px); /* Ocupar toda la pantalla */
 }
 
 /* Barra Lateral */
