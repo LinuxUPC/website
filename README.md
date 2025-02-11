@@ -1,38 +1,45 @@
 # LinuxUPC Website
 
-Este proyecto es un sitio web para LinuxUPC, diseñado para explorar, aprender y crear con Software Libre en la UPC.
+This is the website of LinuxUPC, a community at the UPC dedicated to Free Software.
 
-## Estructura del Proyecto
+## Project Structure
 
-El proyecto está organizado de la siguiente manera:
+The project is organized as follows:
 
-- `assets/css/`: Contiene los archivos CSS.
-  - `window.css`: Estilos comunes para los componentes de ventana.
-  - `title.css`: Estilos para el componente de título.
-- `assets/js/`: Contiene los archivos JavaScript.
-  - `components.js`: Script para cargar componentes dinámicamente.
-- `components/`: Contiene los archivos HTML de los componentes.
-  - `title.html`: HTML para el componente de título.
-  - `window.html`: HTML para los controles de ventana.
+- `assets/css/`: Contains CSS files.
+- `assets/js/`: Contains JavaScript files.
+- `assets/fonts`: Contains the font files.
+- `assets/icons/`: Contains icon files used in the project.
+- `assets/img/`: Contains image files used in the project.
+- `components/`: Contains HTML files for components.
+- `index.html`: The main page and the entry point of the website.
 
-## Desplegar el Proyecto Localmente
+## Running the Project Locally
 
-Para evitar problemas con `fetch` y `file://`, hay que desplegar el proyecto desde un servidor local. Aquí hay algunas opciones:
+To avoid issues with `fetch` and `file://`, the project should be served from a local server. Here are some options:
 
-### Usar Python
+### Using Python
 
 ```sh
 python -m http.server 8000
 ```
 
-### Usar Node.js
+### Using Node.js
 
 ```sh
 npx http-server -p 8000
 ```
 
-### Usar PHP
+### Using PHP
 
 ```sh
 php -S localhost:8000
 ```
+
+## Contributing
+
+Contributions are welcome! Feel free to open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
