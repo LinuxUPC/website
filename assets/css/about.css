@@ -1,6 +1,7 @@
 .about-component {
     position: relative;
     padding: 20px;
+    min-width: 310px;
     height: fit-content;
 
     /* Establecer maxima altura */
