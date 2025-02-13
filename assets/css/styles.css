@@ -160,5 +160,20 @@ body {
 .row:last-child {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  width: 100%;
+  gap: 30px;
+
+  /* Establecer maxima altura */
+  max-height: 100%;
+  overflow: hidden;
+}
+
+/* Segunda fila primera columna */
+.row:last-child > *:first-child {
+  justify-self: end;
+}
+
+/* Segunda fila segunda columna */
+.row:last-child > *:last-child {
+  justify-self: start;
 }
