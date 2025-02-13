@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   Promise.all([
     loadComponent(".title-component", "./components/title.html"),
     loadComponent(".about-component", "./components/about.html"),
+    loadComponent(".activities-component", "./components/activities.html"),
     loadComponent(".window-component", "./components/window.html"),
   ]).then(() => {
     checkOverflow();
