@@ -102,6 +102,7 @@ body {
 /* Contenedor Principal */
 .container {
   flex-grow: 1;
+  max-height: calc(100dvh - clamp(1.1rem, 0.972rem + 0.587vw, 1.5rem)*2.3); /* chapuza total, no se como hacerlo bien*/
   display: flex;
 }
 
@@ -182,6 +183,24 @@ body {
   padding: 0.5em;
 }
 
+.content::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+.content::-webkit-scrollbar-track {
+  background: rgba(29, 29, 29, 1);
+}
+
+.content::-webkit-scrollbar-thumb {
+  background: rgba(105, 105, 105, 0.65); 
+  border-radius: 8px; 
+  border: 2px solid rgba(29, 29, 29, 1);
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+  background: rgba(150, 150, 150, 0.75); 
+}
+
 /* Primera fila */
 .row:first-child {
   display: flex;
@@ -194,8 +213,15 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 100%;
-  gap: 30px;
+  gap: 0.5em;
   align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .row:last-child {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 /* Segunda fila primera columna */
@@ -204,6 +230,6 @@ body {
 }
 
 /* Segunda fila segunda columna */
-.row:last-child > *:last-child {
+.row:last-child > *:last-child:not(:first-child) {
   justify-self: start;
 }

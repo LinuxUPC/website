@@ -1,28 +1,11 @@
 .about-component {
     position: relative;
-    padding: 20px;
-    min-width: 310px;
-    height: fit-content;
+    padding: 0.5em;
+    font-size: clamp(1rem, 0.481rem + 2.374vw, 2rem);
 
     /* Establecer maxima altura */
     max-height: 100%;
     overflow-y: hidden;
-}
-
-/* Usado por overflow.js */
-.overflow {
-    height: 100%;
-    /*
-    Basicamente lo que hace esto es que 
-    al poner el componente a una altura predeterminada
-    el elemento .list puede detectar correctamente
-    que hay un overflow y activa el scroll de la lista.
-    
-    Por defecto la altura del componente es fit-content
-    cosa que es util para ajustarlo si no hay altura
-    de sobras para el contenido. Evitando un componente
-    que tiene un gran especio en "blanco".
-    */
 }
 
 .about-component .window-component {
@@ -38,7 +21,7 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 10px;
+    gap: 0.3em;
 
     /* Establecer maxima altura */
     max-height: 100%;
@@ -50,19 +33,19 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 5px;
+    gap: 0.2em;
     width: fit-content;
 }
 
 .about > .title img {
-    height: 64px;
+    height: 2em;
     object-fit: contain;
 }
 
 .about > .title h3 {
     font-family: Ubuntu;
     font-style: normal;
-    font-size: 30px;
+    font-size: 1em;
     font-weight: 600;
     letter-spacing: 0.5px;
     text-decoration: none;
@@ -77,7 +60,7 @@
 .about p, .about li {
     font-family: Ubuntu;
     font-style: normal;
-    font-size: 16px;
+    font-size: 0.6em;
     font-weight: 400;
     letter-spacing: 0.5px;
     text-decoration: none;
@@ -90,7 +73,7 @@
 }
 
 .about > :not(.title) {
-    margin-left: 10px;
+    margin-left: 0.5em;
 }
 
 .about > .list {
@@ -98,24 +81,18 @@
     flex: 1;
     pointer-events: all;
     flex-direction: column;
-    gap: 10px;
-    border-radius: 12.5px;
+    gap: 0.25em;
     list-style: decimal inside;
-    padding-right: 3px; /* Padding con el scrollbar */
-    
-    /* Scroll de la lista */
-    max-height: 100%;
-    overflow-y: auto;
 }
 
 .about > .list li {
     background: rgba(105, 105, 105, 0.65);
-    border-radius: 12.5px;
-    padding: 10px;
+    border-radius: 0.75em;
+    padding: 0.5em;
 }
 
 /* Estilos para la barra de scroll */
-.about > .list::-webkit-scrollbar {
+/* .about > .list::-webkit-scrollbar {
     width: 10px;
 }
 
@@ -132,4 +109,4 @@
 
 .about > .list::-webkit-scrollbar-thumb:hover {
     background: rgba(150, 150, 150, 0.75); 
-}
+} */

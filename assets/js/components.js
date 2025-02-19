@@ -26,27 +26,3 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("resize", checkOverflow);
   });
 });
-
-const aboutComponents = document.querySelectorAll(".about-component");
-
-function checkOverflow() {
-  aboutComponents.forEach((aboutComponent) => {
-    const aboutElement = aboutComponent.querySelector(".about");
-    if (!aboutElement) return;
-
-    const aboutComponentStyle = getComputedStyle(aboutComponent);
-    // La maxima altura del contenido para no causar overflow
-    const aboutComponentMaxHeight =
-      aboutComponent.clientHeight -
-      parseFloat(aboutComponentStyle.paddingTop) -
-      parseFloat(aboutComponentStyle.paddingBottom);
-    // Altura que el contenido ocupa sin scrolls
-    const aboutElementRealHeight = aboutElement.scrollHeight;
-
-    if (aboutElementRealHeight > aboutComponentMaxHeight) {
-      aboutComponent.classList.add("overflow");
-    } else if (aboutElementRealHeight < aboutComponentMaxHeight) {
-      aboutComponent.classList.remove("overflow");
-    }
-  });
-}
