@@ -177,21 +177,16 @@ body {
   display: grid;
   overflow-x: hidden;
   overflow-y: auto;
-  grid-template-rows: clamp(180px, 33%, 210px) 1fr; /* Define la altura de la primera columna*/
-  gap: 30px;
-  padding: 30px;
+  grid-template-rows: auto 1fr; /* Define la altura de la primera columna*/
+  gap: 0.5em;
+  padding: 0.5em;
 }
 
 /* Primera fila */
 .row:first-child {
   display: flex;
   justify-content: center;
-  align-items: stretch;
-}
-
-.row:first-child > * {
-  width: auto;
-  height: auto;
+  flex-wrap: nowrap;
 }
 
 /* Segunda fila */
