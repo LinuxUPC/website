@@ -217,7 +217,7 @@ body {
   align-items: center;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1275px) or (max-height: 700px) {
   .row:last-child {
     display: flex;
     flex-direction: column;

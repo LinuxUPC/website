@@ -1,7 +1,8 @@
 .activities-component {
     position: relative;
-    padding: 20px;
-    width: 780px;
+    font-size: clamp(1rem, 0.481rem + 2.374vw, 2rem);
+    padding: 0.5em;
+    max-width: 48rem;
     height: fit-content;
 }
 
@@ -18,7 +19,7 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 10px;
+    gap: 0.4em;
 }
 
 .activities > .title {
@@ -26,19 +27,19 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 5px;
+    gap: 0.25em;
     width: fit-content;
 }
 
 .activities > .title img {
-    height: 64px;
+    height: 2em;
     object-fit: contain;
 }
 
 .activities > .title h3 {
     font-family: Ubuntu;
     font-style: normal;
-    font-size: 30px;
+    font-size: 1em;
     font-weight: 600;
     letter-spacing: 0.5px;
     text-decoration: none;
@@ -53,7 +54,7 @@
 .activities p, .activities li {
     font-family: Ubuntu;
     font-style: normal;
-    font-size: 16px;
+    font-size: 0.55em;
     font-weight: 400;
     letter-spacing: 0.5px;
     text-decoration: none;
@@ -70,14 +71,12 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
-    gap: 20px;
-    width: 100%;
+    align-items: stretch;
+    gap: 0.5em;
 }
 
 .activities > .cards > .card {
-    width: 320px;
-    height: 400px;
+    flex: 1 0;
     background: #171718;
     border-radius: 12px;
     overflow: hidden;
@@ -87,8 +86,7 @@
 }
 
 .activities > .cards > .card img {
-    width: 100%;
-    height: 37%;
+    height: 5em;
     object-fit: cover;
     object-position: center -155px;
 }
@@ -120,7 +118,7 @@
 .activities h4 {
     font-family: Ubuntu;
     font-style: normal;
-    font-size: 20px;
+    font-size: 0.8em;
     font-weight: 500;
     letter-spacing: 0.5px;
     text-decoration: none;
@@ -129,60 +127,33 @@
     padding: 0;
 }
 
-.activities p {
-    font-family: Ubuntu;
-    font-style: normal;
-    font-size: 15px;
-    font-weight: 400;
-    letter-spacing: 0.5px;
-    text-decoration: none;
-    text-transform: none;
-    color: #fff;
-    margin: 0;
-    padding: 0;
-    text-align: justify;
-    width: fit-content;
-}
-
 .dots {
-    flex: 1;
+    flex: 0;
     display: flex;
+    align-items: center;
     justify-content: space-between;
+    gap: 0.25em;
 }
 
 .dots span {
-    width: 11px;
-    height: 11px;
+    width: 0.45em;
+    height: 0.45em;
     background-color: rgb(255, 255, 255); 
     border-radius: 50%;
     display: inline-block;
 }
 
-/* Media querry for medium size */
+/* Media querry for medium size
 @media (max-height: 905px) {
     .dots {
         display: none;
     }
-
-    .activities > .cards {
-        gap: 15px;
-    }
-
-    .activities > .cards > .card {
-        flex: 1;
-        height: 300px;
-    }
-
-    .activities > .cards > .card img {
-        height: 20%;
-        object-position: center -75px;
-    }
-}
+} */
 
 /* Media querry for small size */
-@media (max-height: 805px) {
+@media (max-height: 925px) or (max-width: 1650px) {
     .dots {
-        flex: 0 1 50px;
+        flex: 0 1 1em;
         display: flex;
     }
 
@@ -192,7 +163,6 @@
 
     .activities > .cards > .card {
         flex: 1;
-        height: 200px;
         flex-direction: row;
     }
 
@@ -201,13 +171,10 @@
         width: 30%;
         object-position: center center;
     }
+}
 
-    .activities > .cards .card-content {   
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: start;
-        gap: 8px;
-        padding: 6px;
+@media (max-width: 425px) {
+    .activities > .cards > .card img {
+        display: none;
     }
 }
