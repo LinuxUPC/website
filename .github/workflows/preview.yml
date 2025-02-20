@@ -1,0 +1,29 @@
+# .github/workflows/preview.yml
+name: Deploy PR previews
+
+# 
+concurrency: preview-${{ github.ref }} 
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy PR Preview
+        uses: rossjrw/pr-preview-action@v1.6.0
+        with:
+          source-dir: .
+          preview-branch: main
+          umbrella-dir: pr-preview
+          pages-base-url: http://linuxupc.org/pr-preview/
+          comment: true
+          action: auto
