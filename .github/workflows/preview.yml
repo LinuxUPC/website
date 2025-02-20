@@ -24,6 +24,6 @@ jobs:
           source-dir: .
           preview-branch: main
           umbrella-dir: pr-preview
-          pages-base-url: http://linuxupc.org/pr-preview/
+          pages-base-url: linuxupc.org
           comment: true
           action: auto
