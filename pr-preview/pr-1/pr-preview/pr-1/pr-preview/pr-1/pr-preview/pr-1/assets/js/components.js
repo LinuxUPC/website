@@ -18,7 +18,11 @@ document.addEventListener("DOMContentLoaded", () => {
     loadComponent(".title-component", "./components/title.html"),
     loadComponent(".about-component", "./components/about.html"),
     loadComponent(".activities-component", "./components/activities.html"),
+    loadComponent(".window-component", "./components/window.html"),
   ]).then(() => {
-    loadComponent(".window-component", "./components/window.html");
+    checkOverflow();
+
+    // Trigger para el evento de resize
+    window.addEventListener("resize", checkOverflow);
   });
 });
