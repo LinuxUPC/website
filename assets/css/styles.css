@@ -12,7 +12,7 @@ html, body {
   width: 100vw;
   height: 100dvh;
   overflow: hidden;
-  font-family: Ubuntu, sans-serif;
+  font: 16px Ubuntu, sans-serif;
   display: flex;
   flex-direction: column;
 }
