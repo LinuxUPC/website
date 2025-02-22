@@ -9,9 +9,8 @@
 
 /* Hacer que la página ocupe toda la pantalla sin scroll */
 html, body {
-  width: 100vw;
-  height: 100dvh;
-  overflow: hidden;
+  color-scheme: dark;
+  min-height: 100dvh;
   font: 16px Ubuntu, sans-serif;
   display: flex;
   flex-direction: column;
@@ -26,6 +25,10 @@ body {
 
 /* 🔹 Barra Superior */
 .top-bar {
+  position: sticky;
+  z-index: 1000;
+  top: 0;
+  
   display: flex;
   justify-content: space-between;
   font-size: clamp(1.1rem, 0.972rem + 0.587vw, 1.5rem); /* min 350px | max 1440px*/
@@ -102,7 +105,6 @@ body {
 /* Contenedor Principal */
 .container {
   flex-grow: 1;
-  max-height: calc(100dvh - clamp(1.1rem, 0.972rem + 0.587vw, 1.5rem)*2.3); /* chapuza total, no se como hacerlo bien*/
   display: flex;
 }
 
