@@ -13,6 +13,7 @@
 }
 
 .activities {
+    color: var(--text);
     position: relative;
     pointer-events: none;
     z-index: 1;
@@ -31,9 +32,8 @@
     width: fit-content;
 }
 
-.activities > .title img {
+.activities > .title > .svg-container {
     height: 2em;
-    object-fit: contain;
 }
 
 .activities > .title h3 {
@@ -44,7 +44,6 @@
     letter-spacing: 0.5px;
     text-decoration: none;
     text-transform: none;
-    color: #fff;
     margin: 0;
     padding: 0;
     text-align: start;
@@ -59,7 +58,6 @@
     letter-spacing: 0.5px;
     text-decoration: none;
     text-transform: none;
-    color: #fff;
     margin: 0;
     padding: 0;
     text-align: justify;
@@ -77,7 +75,7 @@
 
 .activities > .cards > .card {
     flex: 1 0;
-    background: #171718;
+    background: var(--background-200);
     border-radius: 12px;
     overflow: hidden;
 
@@ -103,19 +101,19 @@
 .activities > .cards .card-content button {
     flex: 0;
     pointer-events: all;
-    background: #3C7EAE;
+    color: var(--text);
+    background: var(--primary);
     border-radius: 10px;
     border: none;
     font-size: 0.8em;
     font-weight: 600;
-    color: #ffffff;
     
     padding: 5px;
     margin-top: auto;
 }
 
 .activities > .cards .card-content button:hover {
-    background: #5d95bd;
+    background: var(--secondary);
 }
 
 .activities h4 {
@@ -126,7 +124,6 @@
     letter-spacing: 0.5px;
     text-decoration: none;
     text-transform: none;
-    color: #fff;
     padding: 0;
 }
 
@@ -141,7 +138,7 @@
 .dots span {
     width: 0.45em;
     height: 0.45em;
-    background-color: rgb(255, 255, 255); 
+    background-color: var(--text); 
     border-radius: 50%;
     display: inline-block;
 }

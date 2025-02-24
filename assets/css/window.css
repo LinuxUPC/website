@@ -1,5 +1,5 @@
 .window-component {
-    background: rgba(29, 29, 29, 0.75);
+    background: hsla(from var(--background-200) h s l / 60%);
     font-size: clamp(1.25rem, 0.861rem + 1.78vw, 2rem);
     width: 100%;
     height: 100%;
@@ -22,13 +22,15 @@
     width: 0.6em;
     height: 0.6em;
     border-radius: 50%;
-    background: #131313;
+    background: hsla(from var(--background-200) h s l / 90%);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.window-controls > .win-control img {
+.window-controls > .win-control svg {
+    fill: var(--text);
+    stroke: var(--text);
     width: 100%;
     height: 100%;
 }
@@ -38,13 +40,13 @@
 }
 
 .window-controls > .win-control:hover {
-    background: #3F3F3F;
+    background: var(--background-400);
 }
 
 .window-controls > .win-control + .close-icon {
-    background: #EA5322;
+    background: var(--secondary);
 }
 
 .window-controls > .win-control + .close-icon:hover {
-    background: #f78f62;
+    background: var(--primary);
 }
