@@ -103,6 +103,7 @@
     pointer-events: all;
     color: var(--text);
     background: var(--primary);
+    transition: background 0.3s;
     border-radius: 10px;
     border: none;
     font-size: 0.8em;

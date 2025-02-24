@@ -23,6 +23,7 @@
     height: 0.6em;
     border-radius: 50%;
     background: hsla(from var(--background-200) h s l / 90%);
+    transition: background 0.3s;
     display: flex;
     justify-content: center;
     align-items: center;

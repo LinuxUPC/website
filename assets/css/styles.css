@@ -134,6 +134,7 @@ body {
   height: 100%;
   border-radius: 0.4rem;
   background: var(--background-items);
+  transition: background 0.3s;
   border: 0.1em solid var(--background-items-hover);
   padding: 0.05em;
 }
