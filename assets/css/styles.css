@@ -247,10 +247,10 @@ nav li {
     background: url("../icons/chevron_right_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg")
       no-repeat center;
     background-size: contain;
-  }
+  } 
 
-  .sidebar ul {
-    display: none;
+  .sidebar ul, nav > * {
+    display: none !important;
   }
 }
 
