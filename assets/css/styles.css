@@ -48,7 +48,8 @@
 }
 
 /* Hacer que la página ocupe toda la pantalla sin scroll */
-html, body {
+html,
+body {
   color-scheme: dark;
   min-height: 100dvh;
   font-family: 'Ubuntu', sans-serif;
@@ -58,7 +59,7 @@ html, body {
 }
 
 body {
-  background-image: url('../img/bg.png');
+  background-image: url("../img/bg.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -69,10 +70,14 @@ body {
   position: sticky;
   z-index: 1000;
   top: 0;
-  
+
   display: flex;
   justify-content: space-between;
-  font-size: clamp(1.1rem, 0.972rem + 0.587vw, 1.5rem); /* min 350px | max 1440px*/
+  font-size: clamp(
+    1.1rem,
+    0.972rem + 0.587vw,
+    1.5rem
+  ); /* min 350px | max 1440px*/
   align-items: center;
   background-color: var(--background-200);
   color: var(--text);
@@ -118,7 +123,7 @@ body {
 
 .right {
   display: flex;
-  height: 1.7em; 
+  height: 1.7em;
   gap: 0.5em;
   align-items: center;
   align-content: stretch;
@@ -132,7 +137,8 @@ body {
   --background-items-hover: var(--background-400);
 
   height: 100%;
-  border-radius: 0.4rem;
+  width: 100%;
+  border-radius: 0.4em;
   background: var(--background-items);
   transition: background 0.3s;
   border: 0.1em solid var(--background-items-hover);
@@ -159,20 +165,25 @@ body {
 }
 
 /* Barra Lateral */
-.sidebar {
+nav {
   --background: hsla(from var(--background-200) h s l / 75%);
 
   min-width: clamp(50px, 8dvw, 90px);
   background: var(--background);
+}
+
+nav ul {
+  position: sticky;
+  top: 3rem; /* TODO: Dynamically adjust the top with the total height of the top bar */
+
   display: flex;
   flex-direction: column;
-  align-items: stretch;
   gap: 0.3rem;
   padding: 0.3rem;
 }
 
 /* Elementos apilados en la barra lateral */
-.sidebar > * {
+nav li {
   --background-items: var(--background-300);
   --background-items-hover: var(--background-400);
 
@@ -186,10 +197,20 @@ body {
   transition: background 0.3s;
   padding: 0.1rem;
   width: 100%;
+  aspect-ratio: 1;
+
+  /* TODO: Implement active navigation item effect */
+  /*&:has(.active) {
+    background: hsla(from var(--background-items) h s l / 90%);
+  }*/
 
   &:hover {
     background: var(--background-items-hover);
   }
+}
+
+.svg-container {
+  height: 100%;
 }
 
 .svg-container svg { /* ! Apply in about.html and activities.html as well */
@@ -199,33 +220,36 @@ body {
 }
 
 @media (max-width: 425px) {
-  .sidebar {
+  nav {
+    position: sticky;
+    top: 3rem; /* TODO: Dynamically adjust the top with the total height of the top bar */
+
     align-self: self-start;
     margin-top: 0.5rem;
     border-radius: 0 0.5rem 0.5rem 0;
     min-width: 1.65rem;
     min-height: 2.5rem;
-    position: relative;
-    cursor: pointer;
+    cursor: pointer; /* ! This may not work for triggering events in JS */
 
     &:hover {
       background-color: var(--background-400);
     }
   }
 
-  .sidebar::before {
-    content: '';
+  nav::before {
+    content: "";
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
     height: 100%;
-    background: url('../icons/chevron_right_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg') no-repeat center;
+    background: url("../icons/chevron_right_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg")
+      no-repeat center;
     background-size: contain;
   }
 
-  .sidebar * {
+  .sidebar ul {
     display: none;
   }
 }
@@ -250,17 +274,22 @@ body {
 
 /* Segunda fila */
 .row:last-child {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
   width: 100%;
   gap: 0.5em;
   align-items: center;
 }
 
-@media (max-width: 1275px) or (max-height: 850px) {
+@media (max-width: 1300px) or (max-height: 870px) {
+  .row > * {
+    max-width: 52rem !important;
+  }
+
   .row:last-child {
-    display: flex;
     flex-direction: column;
+    justify-content: start;
   }
 }
 

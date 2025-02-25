@@ -152,7 +152,11 @@
 } */
 
 /* Media querry for small size */
-@media (max-height: 925px) or (max-width: 1650px) {
+@media (max-height: 880px) or (max-width: 1425px) {
+    .activities-component {
+        max-width: 40rem;
+    }
+
     .dots {
         flex: 0 1 1em;
         display: flex;
