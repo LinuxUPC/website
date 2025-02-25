@@ -127,7 +127,7 @@ body {
   justify-content: start;
 }
 
-.right a {
+.right > * {
   --background-items: var(--background-300);
   --background-items-hover: var(--background-400);
 
@@ -139,12 +139,13 @@ body {
   padding: 0.05em;
 }
 
-.right a:hover {
+.right > *:hover {
   background: var(--background-items-hover);
 }
 
-.right a svg{
-  padding: 0.05rem;;
+.right > * svg{
+  cursor: pointer;
+  padding: 0.05rem;
   height: 100%;
   width: 100%;
   aspect-ratio: 1;
