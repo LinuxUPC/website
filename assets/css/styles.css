@@ -249,7 +249,7 @@ nav li {
     background-size: contain;
   } 
 
-  .sidebar ul, nav > * {
+  nav * {
     display: none !important;
   }
 }
