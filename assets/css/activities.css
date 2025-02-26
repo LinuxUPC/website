@@ -113,8 +113,10 @@
     margin-top: auto;
 }
 
-.activities > .cards .card-content button:hover {
-    background: var(--secondary);
+@media (hover: hover) {
+    .activities > .cards .card-content button:hover {
+        background: var(--secondary);
+    }
 }
 
 .activities h4 {

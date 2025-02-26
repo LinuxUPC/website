@@ -144,8 +144,10 @@ body {
   padding: 0.05em;
 }
 
-.right > *:hover {
-  background: var(--background-items-hover);
+@media (hover: hover) {
+  .right > *:hover {
+    background: var(--background-items-hover);
+  }
 }
 
 .right > * svg{
@@ -221,6 +223,8 @@ nav li {
   display: none;
 }
 
+
+
 @media (max-width: 425px) {
   nav:not(.show) {
     min-width: auto;
@@ -234,8 +238,10 @@ nav li {
     background: var(--background);
     min-width: 1.5rem;
     min-height: 2.5rem;
-
-    &:hover {
+  }
+  
+  @media (hover: hover) {
+    nav:not(.show) > #sidebarCollapse:hover {
       background-color: var(--background-400);
       border: 0;
     }
@@ -265,9 +271,12 @@ nav li {
     background: var(--background-300);
     width: calc(100% - 2 * var(--margin));
     aspect-ratio: 1;
+  }
 
-    &:hover {
+  @media (hover: hover) {
+    nav:is(.show) > #sidebarCollapse:hover {
       background-color: var(--background-400);
+      border: 0;
     }
   }
 

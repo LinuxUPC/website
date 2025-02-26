@@ -40,14 +40,15 @@
     padding: 0.12em;
 }
 
-.window-controls > .win-control:hover {
-    background: var(--background-400);
-}
-
 .window-controls > .win-control + .close-icon {
     background: var(--secondary);
 }
 
-.window-controls > .win-control + .close-icon:hover {
-    background: var(--primary);
+@media (hover: hover) {
+    .window-controls > .win-control:hover {
+        background: var(--background-400);
+    }
+    .window-controls > .win-control + .close-icon:hover {
+        background: var(--primary);
+    }
 }
