@@ -314,7 +314,7 @@ nav li {
   align-items: center;
 }
 
-@media (max-width: 1300px) or (max-height: 870px) {
+@media (max-width: 1300px) or (max-height: 915px) {
   .row > * {
     max-width: 52rem !important;
   }
