@@ -79,6 +79,23 @@ p {
     margin-left: 1em;
 }
 
+.info > a {
+    background-color: var(--primary);
+    border: 1px solid var(--text);
+    border-radius: 0.25em;
+    padding: 0.2em 0;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--text);
+}
+
+@media (hover: hover) {
+    .info > a:hover {
+        background-color: var(--secondary);
+    }
+}
+
 @media (max-width: 700px) {
     .content {
         display: flex;
