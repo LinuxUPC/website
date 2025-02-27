@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     loadComponent(".main-title", "./components/title.html"),
     loadComponent(".about-component", "./components/about.html"),
     loadComponent(".activities-component", "./components/activities.html"),
+    loadComponent(".activities-title", "./components/activities-title.html"),
   ]).then(() => {
     loadComponent(".window-component", "./components/window.html");
   });
