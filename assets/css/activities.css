@@ -26,6 +26,7 @@ p {
     font-weight: 400;
     letter-spacing: 0.75px;
     line-height: 1.25em;
+    text-align: justify;
 }
 
 .activity-card {
