@@ -15,7 +15,7 @@ function loadComponent(selector, file) {
 // Load components on page load event
 document.addEventListener("DOMContentLoaded", () => {
   Promise.all([
-    loadComponent(".title-component", "./components/title.html"),
+    loadComponent(".main-title", "./components/title.html"),
     loadComponent(".about-component", "./components/about.html"),
     loadComponent(".activities-component", "./components/activities.html"),
   ]).then(() => {
