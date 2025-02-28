@@ -17,7 +17,7 @@
 
   --primary: hsl(16, 93%, 59%);
   --secondary: hsl(16, 96%, 72%);
-  --accent: hsl(306, 51%, 38%);
+  --accent: hsl(306, 41%, 45%);
 }
 
 .dark {
@@ -200,14 +200,13 @@ nav li {
   width: 100%;
   aspect-ratio: 1;
 
-  /* TODO: Implement active navigation item effect */
-  /*&:has(.active) {
-    background: hsla(from var(--background-items) h s l / 90%);
-  }*/
-
   &:hover {
     background: var(--background-items-hover);
   }
+}
+
+nav a:is(.active) svg {
+  fill: var(--accent);
 }
 
 .svg-container {
