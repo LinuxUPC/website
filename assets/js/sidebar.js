@@ -7,7 +7,7 @@ sidebarButton.addEventListener("click", () => {
 });
 
 function adjustSidebarTop() {
-  const topBar = document.querySelector(".top-bar");
+  const topBar = document.getElementById("topbar");
   let topBarHeight = topBar.clientHeight;
 
   if (getComputedStyle(sidebarButton).display != "none" && !sidebar.classList.contains("show")) {

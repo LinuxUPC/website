@@ -29,3 +29,7 @@ function updateDateTime() {
 setInterval(updateDateTime, 1000);
 
 updateDateTime();
+
+// Adjust scroll padding for anchor links
+const topbar = document.getElementById("topbar");
+document.documentElement.style.setProperty('--scroll-padding', topbar.clientHeight + 'px');
