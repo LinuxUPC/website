@@ -32,4 +32,7 @@ updateDateTime();
 
 // Adjust scroll padding for anchor links
 const topbar = document.getElementById("topbar");
-document.documentElement.style.setProperty('--scroll-padding', topbar.clientHeight + 'px');
+const main = document.querySelector("main");
+const mainStyle = getComputedStyle(main);
+const mainPaddingTop = parseInt(mainStyle.paddingTop);
+document.documentElement.style.setProperty('--scroll-padding', topbar.clientHeight + mainPaddingTop + 'px');
