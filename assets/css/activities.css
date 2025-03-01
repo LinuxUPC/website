@@ -43,14 +43,18 @@ p {
     }
 }
 
+
 .content {
+    --max-width: 1200px;
+    --min-height: 20rem;
+
     position: relative;
     z-index: 1;
 
     display: grid;
     grid-template-columns: 1fr 2fr;
-    max-width: 1200px;
-    min-height: 25rem;
+    max-width: var(--max-width);
+    min-height: var(--min-height);
     gap: 0.5em;
 }
 
@@ -70,7 +74,32 @@ p {
     }
 }
 
+.carousel-inner > :not(.active) {
+    display: none;
+}
+
+.carousel > button {
+    position: absolute;
+    margin: 0 0.20em;
+    top: 50%;
+    border-radius: 50%;
+    background-color: hsla(from var(--background-200) h s l / 50%);
+    padding: 0.1em 0.4em;
+    color: var(--text);
+    transform: translateY(-50%);
+    cursor: pointer;
+
+    &:is(.prev) {
+        left: 0;
+    }
+    
+    &:is(.next) {
+        right: 0;
+    }
+}
+
 .info {
+    align-self: start;
     display: flex;
     flex-direction: column;
     gap: 0.25em;
