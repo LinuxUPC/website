@@ -78,6 +78,13 @@ p {
     display: none;
 }
 
+
+/* 2) Mostrar los botones sólo si hay al menos 2 imágenes */
+.carousel:has(img:only-of-type) .prev,
+.carousel:has(img:only-of-type) .next {
+  display: none;
+}
+
 .carousel > button {
     position: absolute;
     margin: 0 0.20em;
