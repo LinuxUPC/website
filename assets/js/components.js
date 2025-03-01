@@ -20,6 +20,17 @@ document.addEventListener("DOMContentLoaded", () => {
     loadComponent(".activities-component", "./components/activities.html"),
     loadComponent(".activities-title", "./components/activities-title.html"),
   ]).then(() => {
-    loadComponent(".window-component", "./components/window.html");
+    loadComponent(".window-component", "./components/window.html").then(() => {
+      /**
+       * ! Chapuzon historico, esto es para que el boton de maximice de la card de activitiats de main redirija a activities.html.
+       * Es una tonteria de feature ademas xd.
+      */
+      const maximizeButton = document.querySelector(
+        ".activities-component .maximize-icon"
+      );
+      maximizeButton.addEventListener("click", () => {
+        location.href = "activities.html";
+      });
+    });
   });
 });
