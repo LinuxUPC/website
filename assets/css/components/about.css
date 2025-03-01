@@ -57,6 +57,10 @@
     align-self: center;
 }
 
+.about > .title:is(h4) {
+    font-size: 0.85em;
+}
+
 .about p, .about li {
     font-family: Ubuntu;
     font-style: normal;
@@ -73,6 +77,10 @@
 
 .about > :not(.title) {
     margin-left: 0.5em;
+}
+
+.about a {
+    pointer-events: all;
 }
 
 .about > .list {
