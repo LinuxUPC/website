@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ".activities-component .maximize-icon"
       );
       maximizeButton.addEventListener("click", () => {
-        location.href='activities.html';
+        location.href = "activities.html";
       });
     });
   });
