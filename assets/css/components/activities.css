@@ -136,6 +136,8 @@
     align-items: center;
     justify-content: space-between;
     gap: 0.25em;
+    pointer-events: all;
+    align-self: center;
 }
 
 .dots span {
