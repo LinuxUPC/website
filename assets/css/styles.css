@@ -1,4 +1,44 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:700|Ubuntu:400');
+
+:root {
+  --text: hsl(0, 0%, 0%);
+
+  --background-50: hsl(0, 0%, 95%);
+  --background-100: hsl(0, 0%, 90%);
+  --background-200: hsl(0, 0%, 80%);
+  --background-300: hsl(0, 0%, 70%);
+  --background-400: hsl(0, 0%, 60%);
+  --background-500: hsl(0, 0%, 50%);
+  --background-600: hsl(0, 0%, 40%);
+  --background-700: hsl(0, 0%, 30%);
+  --background-800: hsl(0, 0%, 20%);
+  --background-900: hsl(0, 0%, 10%);
+  --background-950: hsl(0, 0%, 5%);
+
+  --primary: hsl(16, 93%, 59%);
+  --secondary: hsl(16, 96%, 72%);
+  --accent: hsl(306, 41%, 45%);
+}
+
+.dark {
+  --text: hsl(0, 0%, 100%);
+
+  --background-50: hsl(0, 0%, 5%);
+  --background-100: hsl(0, 0%, 10%);
+  --background-200: hsl(0, 0%, 20%);
+  --background-300: hsl(0, 0%, 30%);
+  --background-400: hsl(0, 0%, 40%);
+  --background-500: hsl(0, 0%, 50%);
+  --background-600: hsl(0, 0%, 60%);
+  --background-700: hsl(0, 0%, 70%);
+  --background-800: hsl(0, 0%, 80%);
+  --background-900: hsl(0, 0%, 90%);
+  --background-950: hsl(0, 0%, 95%);
+
+  --primary: hsl(16, 97%, 59%);
+  --secondary: hsl(15, 100%, 68%);
+  --accent: hsl(306, 57%, 70%);
+}
 
 /* Reseteo básico */
 * {
@@ -8,34 +48,43 @@
 }
 
 /* Hacer que la página ocupe toda la pantalla sin scroll */
-html, body {
-  width: 100vw;
-  height: 100dvh;
-  overflow: hidden;
-  font-family: Ubuntu, sans-serif;
+html,
+body {
+  min-height: 100dvh;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 400;
   display: flex;
   flex-direction: column;
+  scroll-padding-top: var(--scroll-padding, 60px);
 }
 
 body {
-  background-image: url('../img/bg.png');
+  background-image: url("../img/bg.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 /* 🔹 Barra Superior */
-.top-bar {
+header {
+  position: sticky;
+  z-index: 1000;
+  top: 0;
+
   display: flex;
   justify-content: space-between;
-  font-size: clamp(1.1rem, 0.972rem + 0.587vw, 1.5rem); /* min 350px | max 1440px*/
+  font-size: clamp(
+    1.1rem,
+    0.972rem + 0.587vw,
+    1.5rem
+  ); /* min 350px | max 1440px*/
   align-items: center;
-  background-color: #131313;
-  color: white;
+  background-color: var(--background-200);
+  color: var(--text);
   padding: 0.3em;
 }
 
-.top-bar > .left {
+header > .left {
   display: flex;
   height: 100%;
   gap: 0.4em;
@@ -74,7 +123,7 @@ body {
 
 .right {
   display: flex;
-  height: 1.7em; 
+  height: 1.7em;
   gap: 0.5em;
   align-items: center;
   align-content: stretch;
@@ -83,153 +132,157 @@ body {
   justify-content: start;
 }
 
-.right a {
+.right > * {
+  --background-items: var(--background-300);
+  --background-items-hover: var(--background-400);
+
   height: 100%;
+  width: 100%;
   border-radius: 0.4em;
-  background: #3F3F3F;
-  padding: 0.1em;
+  background: var(--background-items);
+  transition: background 0.3s;
+  border: 0.1em solid var(--background-items-hover);
+  padding: 0.05em;
 }
 
-.right a:hover {
-  background: #5a5858;
+@media (hover: hover) {
+  .right > *:hover {
+    background: var(--background-items-hover);
+    border: 0.1em solid var(--background-items-hover);
+  }
 }
 
-.right a img {
+.right > * svg{
+  cursor: pointer;
+  padding: 0.05rem;
   height: 100%;
+  width: 100%;
   aspect-ratio: 1;
+  fill: var(--text);
 }
 
 /* Contenedor Principal */
 .container {
   flex-grow: 1;
-  max-height: calc(100dvh - clamp(1.1rem, 0.972rem + 0.587vw, 1.5rem)*2.3); /* chapuza total, no se como hacerlo bien*/
   display: flex;
 }
 
 /* Barra Lateral */
-.sidebar {
+nav {
+  --background: hsla(from var(--background-200) h s l / 75%);
+
+  position: sticky;
+  left: 0;
   min-width: clamp(50px, 8dvw, 90px);
-  background: rgba(29, 29, 29, 0.75);
+  background: var(--background);
+}
+
+nav ul {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
   gap: 0.3rem;
   padding: 0.3rem;
 }
 
 /* Elementos apilados en la barra lateral */
-.sidebar > * {
+nav li {
+  --background-items: var(--background-300);
+  --background-items-hover: var(--background-400);
+
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(67, 58, 67, 0.9);
+  background: var(--background-items);
   border-radius: 0.5rem;
+  border: 0.2rem solid var(--background-items-hover);
   cursor: pointer;
   transition: background 0.3s;
   padding: 0.1rem;
   width: 100%;
-}
-
-.sidebar > *:hover {
-  background-color: #555;
-}
-
-.sidebar img {
-  width: 100%;
   aspect-ratio: 1;
-  object-fit: cover;
+
+  &:hover {
+    background: var(--background-items-hover);
+  }
 }
+
+nav a:is(.active) svg {
+  fill: var(--accent);
+}
+
+.svg-container {
+  height: 100%;
+}
+
+.svg-container svg { /* ! Apply in about.html and activities.html as well */
+  height: 100%;
+  width: 100%;
+  fill: var(--text);
+}
+
+#sidebarCollapse {
+  display: none;
+}
+
+
 
 @media (max-width: 425px) {
-  .sidebar {
-    align-self: self-start;
-    margin-top: 0.5rem;
-    border-radius: 0 0.5rem 0.5rem 0;
-    min-width: 1.65rem;
-    min-height: 2.5rem;
-    position: relative;
-    cursor: pointer;
+  nav:not(.show) {
+    min-width: auto;
+    background: none;
   }
 
-  .sidebar::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  nav:not(.show) > #sidebarCollapse {
+    display: flex;
+    border: 0;
+    border-radius: 0 0.5rem 0.5rem 0;
+    background: var(--background);
+    min-width: 1.5rem;
+    min-height: 2.5rem;
+  }
+  
+  @media (hover: hover) {
+    nav:not(.show) > #sidebarCollapse:hover {
+      background-color: var(--background-400);
+      border: 0;
+    }
+  }
+
+  nav > #sidebarCollapse > svg {
+    align-self: center;
     width: 100%;
     height: 100%;
-    background: url('../icons/chevron_right_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg') no-repeat center;
-    background-size: contain;
+    fill: var(--text);
   }
 
-  .sidebar:hover {
-    background-color: rgba(17, 17, 17, 0.75);;
+  nav:not(.show) ul {
+    display: none !important;
   }
 
-  .sidebar * {
-    display: none;
-  }
-}
+  nav:is(.show) > #sidebarCollapse {
+    --margin: 0.25rem;
 
-/* Contenido Principal */
-.content {
-  flex: 1;
-  display: grid;
-  overflow-x: hidden;
-  overflow-y: auto;
-  grid-template-rows: auto 1fr; /* Define la altura de la primera columna*/
-  gap: 0.5em;
-  padding: 0.5em;
-}
+    position: absolute;
+    bottom: var(--margin);
+    left: var(--margin);
 
-.content::-webkit-scrollbar {
-  width: 0.5em;
-}
-
-.content::-webkit-scrollbar-track {
-  background: rgba(29, 29, 29, 1);
-}
-
-.content::-webkit-scrollbar-thumb {
-  background: rgba(105, 105, 105, 0.65); 
-  border-radius: 8px; 
-  border: 2px solid rgba(29, 29, 29, 1);
-}
-
-.content::-webkit-scrollbar-thumb:hover {
-  background: rgba(150, 150, 150, 0.75); 
-}
-
-/* Primera fila */
-.row:first-child {
-  display: flex;
-  justify-content: center;
-  flex-wrap: nowrap;
-}
-
-/* Segunda fila */
-.row:last-child {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  width: 100%;
-  gap: 0.5em;
-  align-items: center;
-}
-
-@media (max-width: 1275px) or (max-height: 850px) {
-  .row:last-child {
     display: flex;
-    flex-direction: column;
+    border: 0.15rem solid var(--background-500);
+    border-radius: 0.5rem;
+    background: var(--background-300);
+    width: calc(100% - 2 * var(--margin));
+    aspect-ratio: 1;
   }
-}
 
-/* Segunda fila primera columna */
-.row:last-child > *:first-child {
-  justify-self: end;
-}
+  @media (hover: hover) {
+    nav:is(.show) > #sidebarCollapse:hover {
+      background-color: var(--background-400);
+      border: 0;
+    }
+  }
 
-/* Segunda fila segunda columna */
-.row:last-child > *:last-child:not(:first-child) {
-  justify-self: start;
+  nav:is(.show) > #sidebarCollapse > svg {
+    transform: rotate(180deg);
+    justify-self: center;
+  }
 }

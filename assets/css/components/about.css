@@ -2,6 +2,7 @@
     position: relative;
     padding: 0.5em;
     font-size: clamp(1rem, 0.481rem + 2.374vw, 2rem);
+    max-width: 28em;
 
     /* Establecer maxima altura */
     max-height: 100%;
@@ -15,6 +16,7 @@
 }
 
 .about {
+    color: var(--text);
     position: relative;
     pointer-events: none;
     z-index: 1;
@@ -37,9 +39,8 @@
     width: fit-content;
 }
 
-.about > .title img {
+.about > .title > .svg-container {
     height: 2em;
-    object-fit: contain;
 }
 
 .about > .title h3 {
@@ -50,11 +51,14 @@
     letter-spacing: 0.5px;
     text-decoration: none;
     text-transform: none;
-    color: #fff;
     margin: 0;
     padding: 0;
     text-align: start;
     align-self: center;
+}
+
+.about > .title:is(h4) {
+    font-size: 0.85em;
 }
 
 .about p, .about li {
@@ -65,7 +69,6 @@
     letter-spacing: 0.5px;
     text-decoration: none;
     text-transform: none;
-    color: #fff;
     margin: 0;
     padding: 0;
     text-align: justify;
@@ -74,6 +77,10 @@
 
 .about > :not(.title) {
     margin-left: 0.5em;
+}
+
+.about a {
+    pointer-events: all;
 }
 
 .about > .list {
@@ -86,7 +93,7 @@
 }
 
 .about > .list li {
-    background: rgba(105, 105, 105, 0.65);
+    background: var(--background-200);
     border-radius: 0.75em;
     padding: 0.5em;
 }

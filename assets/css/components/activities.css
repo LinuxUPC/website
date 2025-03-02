@@ -1,0 +1,189 @@
+.activities-component {
+    position: relative;
+    font-size: clamp(1rem, 0.481rem + 2.374vw, 2rem);
+    padding: 0.5em;
+    max-width: 48rem;
+    height: fit-content;
+}
+
+.activities-component .window-component {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.activities {
+    color: var(--text);
+    position: relative;
+    pointer-events: none;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.4em;
+}
+
+.activities > .title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25em;
+    width: fit-content;
+}
+
+.activities > .title > .svg-container {
+    height: 2em;
+}
+
+.activities > .title h3 {
+    font-family: Ubuntu;
+    font-style: normal;
+    font-size: 1em;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    text-transform: none;
+    margin: 0;
+    padding: 0;
+    text-align: start;
+    align-self: center;
+}
+
+.activities p, .activities li {
+    font-family: Ubuntu;
+    font-style: normal;
+    font-size: 0.55em;
+    font-weight: 400;
+    letter-spacing: 0.75px;
+    text-decoration: none;
+    text-transform: none;
+    margin: 0;
+    padding: 0;
+    text-align: justify;
+    width: fit-content;
+}
+
+.activities > .cards {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    gap: 0.5em;
+}
+
+.activities > .cards > .card {
+    flex: 1 0;
+    background: var(--background-200);
+    border-radius: 12px;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.activities > .cards > .card img {
+    height: 5em;
+    object-fit: cover;
+}
+
+.activities > .cards .card-content {   
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 0.6rem;
+    padding: 10px;
+}
+
+.activities > .cards .card-content button {
+    flex: 0;
+    pointer-events: all;
+    color: var(--text);
+    background: var(--primary);
+    transition: background 0.3s;
+    border-radius: 10px;
+    border: none;
+    font-size: 0.8em;
+    font-weight: 600;
+    cursor: pointer;
+    
+    padding: 5px;
+    margin-top: auto;
+}
+
+@media (hover: hover) {
+    .activities > .cards .card-content button:hover {
+        background: var(--secondary);
+    }
+}
+
+.activities h4 {
+    font-family: Ubuntu;
+    font-style: normal;
+    font-size: 0.8em;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    text-transform: none;
+    padding: 0;
+}
+
+.dots {
+    flex: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.25em;
+    pointer-events: all;
+    align-self: center;
+}
+
+.dots span {
+    width: 0.45em;
+    height: 0.45em;
+    background-color: var(--text); 
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* Media querry for medium size
+@media (max-height: 905px) {
+    .dots {
+        display: none;
+    }
+} */
+
+/* Media querry for small size */
+@media (max-height: 880px) or (max-width: 1425px) {
+    .activities-component {
+        max-width: 40rem;
+    }
+
+    .dots {
+        flex: 0 1 1em;
+        display: flex;
+    }
+
+    .activities > .cards > .card:not(:first-child) {
+        display: none;
+    }
+
+    .activities > .cards > .card {
+        flex: 1;
+        flex-direction: row;
+    }
+
+    .activities > .cards > .card img {
+        height: 100%;
+        width: 30%;
+        object-position: center center;
+    }
+}
+
+@media (max-width: 425px) {
+    .activities > .cards > .card img {
+        display: none;
+    }
+}
