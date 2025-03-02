@@ -107,7 +107,6 @@
     border: none;
     font-size: 0.8em;
     font-weight: 600;
-    cursor: pointer;
     
     padding: 5px;
     margin-top: auto;
@@ -136,8 +135,6 @@
     align-items: center;
     justify-content: space-between;
     gap: 0.25em;
-    pointer-events: all;
-    align-self: center;
 }
 
 .dots span {

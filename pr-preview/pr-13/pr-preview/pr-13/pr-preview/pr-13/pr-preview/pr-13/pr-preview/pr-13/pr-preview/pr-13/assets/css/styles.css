@@ -148,7 +148,6 @@ header > .left {
 @media (hover: hover) {
   .right > *:hover {
     background: var(--background-items-hover);
-    border: 0.1em solid var(--background-items-hover);
   }
 }
 
