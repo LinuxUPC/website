@@ -19,7 +19,13 @@ document.addEventListener("DOMContentLoaded", () => {
     loadComponent(".about-component", "./components/about.html"),
     loadComponent(".activities-component", "./components/activities.html"),
     loadComponent(".activities-title", "./components/activities-title.html"),
+    loadComponent('.chat-component', './components/chat.html'),
   ]).then(() => {
+
+    if (typeof window.initChat === 'function') {
+      window.initChat();
+    }
+    
     loadComponent(".window-component", "./components/window.html").then(() => {
       /**
        * ! Chapuzon historico, esto es para que el boton de maximice de la card de activitiats de main redirija a activities.html.
