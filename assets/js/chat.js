@@ -7,12 +7,13 @@ function initChat() {
   const chatSend = document.getElementById('chat-send');
   const chatMessages = document.getElementById('chat-messages');
 
-  // Minimizar/maximizar el chat
+  // Maximizar el chat
   chatBubble.addEventListener('click', () => {
     chatWidget.classList.remove('minimized');
     chatInput.focus();
   });
 
+  // Minimizar el chat
   minimizeButton.addEventListener('click', () => {
     chatWidget.classList.add('minimized');
   });
@@ -55,6 +56,8 @@ function initChat() {
   }
 
   // Respuestas de la IA (simplificado)
+  // TODO: Implementar Gemini (v1)
+  // TODO: Implementar OpenSource AI (v2)
   function getBotResponse(message) {
     message = message.toLowerCase();
     

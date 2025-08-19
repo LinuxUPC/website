@@ -1,121 +1,141 @@
+/*---------------------------------------
+ * 1. WIDGET DE CHAT (CONTENEDOR PRINCIPAL)
+ *---------------------------------------*/
 .chat-widget {
+  /* Posicionamiento fijo en la esquina inferior derecha */
   position: fixed;
   bottom: 20px;
   right: 20px;
+  
+  /* Dimensiones del widget */
   width: 320px;
   height: 400px;
+  
+  /* Apariencia visual - efecto de vidrio esmerilado */
   backdrop-filter: blur(10px);
-  background-color: rgba(30, 30, 30, 0.95); /* Color oscuro con 95% de opacidad */
+  background-color: var(--chat-background);
   border: 1px solid var(--window-border);
   border-radius: 6px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  
+  /* Layout del contenedor */
   display: flex;
   flex-direction: column;
+  
+  /* Controla la capa (encima de otros elementos) */
   z-index: 1001;
+  
+  /* Animaciones suaves */
   transition: transform 0.3s ease, height 0.3s ease, opacity 0.3s ease;
 }
 
-body.light .chat-widget {
-  background-color: rgba(30, 30, 30, 0.95); /* Mismo color que en modo oscuro */
-  border-color: var(--window-border);
-}
-
+/* Estado minimizado - oculta el widget fuera de la pantalla */
 .chat-widget.minimized {
   transform: translateY(calc(100% + 20px));
   opacity: 0;
   pointer-events: none;
 }
 
+
+/*---------------------------------------
+ * 2. ENCABEZADO DEL CHAT
+ *---------------------------------------*/
 .chat-header {
+  /* Layout del encabezado */
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 8px 12px;
+  
+  /* Línea divisoria inferior */
   border-bottom: 1px solid var(--window-border);
 }
 
-body.light .chat-header .window-title {
-  color: white !important; /* Forzar color blanco en modo claro */
+.chat-header .window-title {
+  color: var(--text);
 }
 
-body.light .chat-header {
-  border-color: rgba(255, 255, 255, 0.1);
-  background-color: rgba(30, 30, 30, 0.95);
-}
-
+/*---------------------------------------
+ * 3. CUERPO DEL CHAT
+ *---------------------------------------*/
 .chat-body {
+  /* Ocupa el espacio restante */
   flex: 1;
+  
+  /* Layout vertical */
   display: flex;
   flex-direction: column;
+  
+  /* Evita desbordamiento */
   overflow: hidden;
 }
 
+/* Contenedor de mensajes con scroll */
 .chat-messages {
-  flex: 1;
+  flex: 1; /* Ocupa el espacio disponible */
   padding: 12px;
-  overflow-y: auto;
+  overflow-y: auto; /* Permite desplazamiento vertical */
+  
+  /* Layout de mensajes */
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 12px; /* Espacio entre mensajes */
 }
 
+/*---------------------------------------
+ * 4. ESTILOS DE MENSAJES
+ *---------------------------------------*/
 .message {
-  max-width: 80%;
+  max-width: 80%; /* Ancho máximo de burbuja */
   display: flex;
 }
 
+/* Mensaje del usuario (alineado a la derecha) */
 .message.user {
   align-self: flex-end;
 }
 
+/* Mensaje del bot (alineado a la izquierda) */
 .message.bot {
   align-self: flex-start;
 }
 
+/* Estilos generales para contenido de mensajes */
 .message-content {
   padding: 8px 12px;
   border-radius: 12px;
-  background-color: #444; /* Color oscuro para modo oscuro */
-  color: white; /* Color de texto fijo */
+  background-color: var(--chat-message-bot);
+  color: var(--text);
 }
 
-body.light .message-content {
-  background-color: #444; /* Mantener el fondo oscuro para mensajes del bot */
-  color: white; /* Mantener el texto en blanco */
-}
-
-/* Estilo para los mensajes del usuario con un color explícito como fallback */
+/* Estilo específico para mensajes del usuario */
 .message.user .message-content {
-  background-color: var(--primary-color, #eb9c3c);
-  color: white; /* Color fijo para mantener contraste */
+  background-color: var(--chat-message-user); /* Color anaranjado característico */
+  color: var(--text);
 }
 
+
+/*---------------------------------------
+ * 5. ÁREA DE ENTRADA DE TEXTO
+ *---------------------------------------*/
 .chat-input-container {
   display: flex;
   padding: 10px;
   border-top: 1px solid var(--window-border);
 }
 
-body.light .chat-input-container {
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
+/* Campo de entrada de texto */
 .chat-input-container input {
-  flex: 1;
+  flex: 1; /* Ocupa el espacio disponible */
   padding: 8px 12px;
   border: 1px solid var(--window-border);
-  border-radius: 20px;
-  background-color: var(--window-element-bg);
-  color: var(--text-color);
+  border-radius: 20px; 
+  background-color: var(--chat-input);
+  color: var(--text);
   outline: none;
 }
 
-body.light .chat-input-container input {
-  background-color: #333 !important; /* Forzar fondo oscuro */
-  color: white !important; /* Forzar texto blanco */
-  border-color: #555 !important; /* Forzar borde oscuro */
-}
-
+/* Botón de enviar */
 .chat-input-container button {
   background: none;
   border: none;
@@ -123,43 +143,64 @@ body.light .chat-input-container input {
   margin-left: 8px;
 }
 
+.chat-input-container button svg path {
+  fill: var(--text);
+}
+
+
+/*---------------------------------------
+ * 6. BOTÓN FLOTANTE DE CHAT (BURBUJA)
+ *---------------------------------------*/
 .chat-bubble {
+  /* Posicionamiento fijo en esquina inferior derecha */
   position: fixed;
   bottom: 20px;
   right: 20px;
+  
+  /* Dimensiones y forma circular */
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: var(--primary-color);
+  
+  /* Apariencia visual */
+  background-color: var(--chat-bubble);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border: none;
+  
+  /* Centrado del ícono */
   display: flex;
   justify-content: center;
   align-items: center;
+  
+  /* Interactividad */
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
-  border: none;
+  z-index: 1000; /* Un nivel por debajo del chat */
 }
 
-body.light .chat-bubble svg path,
-body.light .chat-input-container button svg path {
-  fill: #e8eaed;
+.chat-bubble svg {
+  fill: var(--text);
 }
 
-body.light .chat-bubble {
-  background-color: #eb9c3c; /* Color consistente para el botón */
+.chat-bubble svg path {
+  fill: var(--text);
 }
 
+
+/*---------------------------------------
+ * 7. CONTROLES DE VENTANA
+ *---------------------------------------*/
 .window-controls {
   display: flex;
   gap: 4px;
   min-height: 24px;
 }
 
+/* Estilo base para botones de control */
 .window-control {
-  width: 20px !important; /* Forzar el ancho */
-  height: 20px !important; /* Forzar la altura */
-  min-width: 20px; /* Establecer un ancho mínimo */
-  min-height: 20px; /* Establecer una altura mínima */
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px;
+  min-height: 20px;
   border-radius: 50%;
   border: none;
   cursor: pointer;
@@ -169,14 +210,16 @@ body.light .chat-bubble {
   font-size: 16px;
   font-weight: bold;
   color: #333;
-  background-color: #f9ca24;
+  background-color: #f9ca24; /* Color amarillo para minimizar */
 }
 
+/* Botón específico para minimizar */
 .window-control.minimize {
   background-color: #f9ca24;
   position: relative;
 }
 
+/* Símbolo "-" dentro del botón minimizar */
 .window-control.minimize::after {
   content: "-";
   position: absolute;
@@ -185,13 +228,15 @@ body.light .chat-bubble {
   transform: translate(-50%, -50%);
   font-size: 16px;
   font-weight: bold;
-  color: #333;
+  color: rgb(0, 0, 0);
 }
 
-
+/*---------------------------------------
+ * 8. RESPONSIVIDAD
+ *---------------------------------------*/
 @media (max-width: 768px) {
   .chat-widget {
-    width: 300px;
+    width: 300px; /* Ligeramente más pequeño en móviles */
     height: 350px;
   }
 }
