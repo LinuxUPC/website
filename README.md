@@ -42,7 +42,7 @@ Contributions are welcome! Feel free to open an issue or submit a pull request.
 
 ## Configuració de l'Assistent Virtual
 
-Per modificar la informació personalitzada de l'assistent virtual (com ara dates d'esdeveniments, coneixements específics, etc.), cal editar la variable `first_prompt` al fitxer:
+Per modificar la informació personalitzada de l'assistent virtual (com ara dates d'esdeveniments, coneixements específics, etc.), cal editar la variable `context` al fitxer:
 
 `assets/js/geminiBehaviour.js`
 

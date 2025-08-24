@@ -1,5 +1,5 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { first_prompt, welcomeMessage} from './geminiBehaviour.js';
+import { context, welcomeMessage} from './geminiBehaviour.js';
 import CryptoJS from 'crypto-js';
 
 // URL of the Gist where the encrypted key is located.
@@ -31,18 +31,23 @@ export async function initializeGemini() {
 
     // 3. Initialize the API with the decrypted key
     ai = new GoogleGenerativeAI(decryptedKey);
-    model = ai.getGenerativeModel({ model: "gemini-2.0-flash-lite" });
+    model = ai.getGenerativeModel({ 
+      model: "gemini-2.0-flash-lite",
+      systemInstruction: context 
+    });
 
     chat = model.startChat({
         history: [
-            {
+          /*
+          {
             role: "user",
-            parts: [{ text: first_prompt }],
-            },
-            {
+            parts: [{ text: context }],
+          },
+          {
             role: "model",
             parts: [{ text: welcomeMessage }],
-            },
+          },
+          */
         ],
         generationConfig: {
             maxOutputTokens: 800,
@@ -84,14 +89,16 @@ export async function getGeminiResponse(userMessage) {
 export function resetChatHistory() {
   chat = model.startChat({
     history: [
+      /*
       {
         role: "user",
-        parts: [{ text: first_prompt }],
+        parts: [{ text: context }],
       },
       {
         role: "model",
         parts: [{ text: welcomeMessage }],
       },
+      */
     ],
     generationConfig: {
       maxOutputTokens: 800,
