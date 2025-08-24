@@ -40,13 +40,13 @@ php -S localhost:8000
 
 Contributions are welcome! Feel free to open an issue or submit a pull request.
 
-## Configuració de l'Assistent Virtual
+### Virtual Assistant Configuration
 
-Per modificar la informació personalitzada de l'assistent virtual (com ara dates d'esdeveniments, coneixements específics, etc.), cal editar la variable `context` al fitxer:
+To modify the virtual assistant's personalized information (such as event dates, specific knowledge, etc.), you need to edit the `context` variable in the file:
 
 `assets/js/geminiBehaviour.js`
 
-Aquesta variable conté les instruccions inicials que defineixen la personalitat i la base de coneixements de l'assistent.
+This variable contains the initial instructions that define the assistant's personality and knowledge base.
 
 
 ## License
