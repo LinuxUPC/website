@@ -1,5 +1,13 @@
-// Exportar la función de inicialización para que pueda ser llamada después de cargar el componente
+// Importa les funcions necessàries des dels mòduls de l'API de Gemini i del comportament del xat.
+import { getGeminiResponse, resetChatHistory } from './geminiApi.js';
+import { welcomeMessage } from './geminiBehaviour.js';
+
+/**
+ * Inicialitza el component del xat i gestiona la seva interactivitat.
+ * Aquesta funció s'exporta per poder ser cridada després de carregar el component del xat.
+ */
 function initChat() {
+  // Obté les referències als elements del DOM del xat.
   const chatWidget = document.getElementById('chat-widget');
   const chatBubble = document.getElementById('chat-bubble');
   const minimizeButton = document.getElementById('chat-minimize');
@@ -7,36 +15,62 @@ function initChat() {
   const chatSend = document.getElementById('chat-send');
   const chatMessages = document.getElementById('chat-messages');
 
-  // Maximizar el chat
+  // Mostra el missatge de benvinguda inicial al xat.
+  addMessage(welcomeMessage, 'bot');
+
+  // Afegeix un esdeveniment per maximitzar el xat quan es fa clic a la bombolla.
   chatBubble.addEventListener('click', () => {
     chatWidget.classList.remove('minimized');
-    chatInput.focus();
+    chatInput.focus(); // Posa el focus a l'input de text.
   });
 
-  // Minimizar el chat
+  // Afegeix un esdeveniment per minimitzar el xat.
   minimizeButton.addEventListener('click', () => {
     chatWidget.classList.add('minimized');
   });
 
-  // Función para enviar un mensaje
-  function sendMessage() {
-    const message = chatInput.value.trim();
-    if (message.length === 0) return;
+  /**
+   * Envia el missatge de l'usuari a l'API de Gemini i mostra la resposta.
+   * Aquesta funció és asíncrona per esperar la resposta de l'API.
+   */
+  async function sendMessage() {
+    const message = chatInput.value.trim(); // Obté i neteja el missatge de l'input.
+    if (message.length === 0) return; // No fa res si el missatge és buit.
 
-    // Añadir mensaje del usuario
+    // Afegeix el missatge de l'usuari a la finestra del xat.
     addMessage(message, 'user');
     
-    // Limpiar input
+    // Neteja el camp d'entrada de text.
     chatInput.value = '';
     
-    // Procesar y responder
-    setTimeout(() => {
-      const response = getBotResponse(message);
+    // Mostra l'indicador de "escrivint...".
+    const typingIndicator = showTypingIndicator();
+    
+    try {
+      // Obté la resposta de l'API de Gemini.
+      const response = await getGeminiResponse(message);
+      
+      // Elimina l'indicador de "escrivint...".
+      typingIndicator.remove();
+      
+      // Afegeix la resposta del bot a la finestra del xat.
       addMessage(response, 'bot');
-    }, 500);
+    } catch (error) {
+      console.error('Error getting response:', error);
+      
+      // Elimina l'indicador de "escrivint..." en cas d'error.
+      typingIndicator.remove();
+      
+      // Mostra un missatge d'error a l'usuari.
+      addMessage('Ho sento, ha ocorregut un error en processar la teva consulta.', 'bot');
+    }
   }
 
-  // Añadir mensaje al chat
+  /**
+   * Afegeix un missatge a la finestra del xat.
+   * @param {string} text - El text del missatge.
+   * @param {string} sender - El remitent del missatge ('user' o 'bot').
+   */
   function addMessage(text, sender) {
     const messageDiv = document.createElement('div');
     messageDiv.classList.add('message', sender);
@@ -51,41 +85,41 @@ function initChat() {
     messageDiv.appendChild(contentDiv);
     chatMessages.appendChild(messageDiv);
     
-    // Scroll to bottom
+    // Fa scroll automàtic cap avall per mostrar l'últim missatge.
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
-
-  // Respuestas de la IA (simplificado)
-  // TODO: Implementar Gemini (v1)
-  // TODO: Implementar OpenSource AI (v2)
-  function getBotResponse(message) {
-    message = message.toLowerCase();
+  
+  /**
+   * Mostra un indicador visual de que el bot està "escrivint".
+   * @returns {HTMLElement} L'element de l'indicador per poder eliminar-lo posteriorment.
+   */
+  function showTypingIndicator() {
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('message', 'bot', 'typing-indicator');
     
-    // Respuestas predefinidas para preguntas comunes
-    if (message.includes('hola') || message.includes('buenas')) {
-      return '¡Hola! ¿En qué puedo ayudarte sobre LinuxUPC?';
-    } 
-    else if (message.includes('qué es linux') || message.includes('que es linux')) {
-      return 'Linux es un sistema operativo de código abierto basado en Unix, creado por Linus Torvalds en 1991.';
+    const contentDiv = document.createElement('div');
+    contentDiv.classList.add('message-content');
+    
+    const indicator = document.createElement('div');
+    indicator.classList.add('typing');
+    
+    // Crea els tres punts de l'animació.
+    for (let i = 0; i < 3; i++) {
+      const dot = document.createElement('span');
+      indicator.appendChild(dot);
     }
-    else if (message.includes('qué es linuxupc') || message.includes('que es linuxupc')) {
-      return 'LinuxUPC es una asociación universitaria de la UPC dedicada a la promoción del software libre y Linux. Organizamos talleres, eventos y ayudamos a la comunidad universitaria con temas relacionados a Linux y el software libre.';
-    }
-    else if (message.includes('actividad') || message.includes('evento') || message.includes('taller')) {
-      return 'Organizamos diversas actividades como Install Parties, talleres de programación, charlas sobre software libre, y eventos de networking. ¡Consulta nuestra sección de actividades para ver los próximos eventos!';
-    }
-    else if (message.includes('contacto') || message.includes('unirme') || message.includes('participar')) {
-      return 'Para unirte o contactar con nosotros puedes escribir a nuestro correo linuxupc@gmail.com o seguirnos en redes sociales. ¡Estamos abiertos a nuevos miembros interesados en Linux y el software libre!';
-    }
-    else if (message.includes('ubicacion') || message.includes('donde') || message.includes('lugar')) {
-      return 'Nuestra sede principal está en el Campus Norte de la UPC, en Barcelona. Nos reunimos regularmente en la sala B5-S102.';
-    }
-    else {
-      return 'Lo siento, no tengo información específica sobre eso. ¿Puedes reformular tu pregunta o preguntarme sobre actividades, qué es LinuxUPC, o cómo contactarnos?';
-    }
+    
+    contentDiv.appendChild(indicator);
+    messageDiv.appendChild(contentDiv);
+    chatMessages.appendChild(messageDiv);
+    
+    // Fa scroll automàtic cap avall.
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    return messageDiv;
   }
 
-  // Eventos para enviar mensajes
+  // Afegeix esdeveniments per enviar el missatge (clic al botó o prémer Enter).
   chatSend.addEventListener('click', sendMessage);
   
   chatInput.addEventListener('keypress', function(e) {
@@ -95,14 +129,14 @@ function initChat() {
   });
 }
 
-// Ejecutar inicialización si se carga el script después del DOM
+// Executa la inicialització del xat un cop el contingut del DOM s'ha carregat.
 document.addEventListener('DOMContentLoaded', function() {
-  // Solo inicializar si el componente ya está en el DOM
+  // Només inicialitza si el component del xat ja existeix al DOM.
   if (document.getElementById('chat-widget')) {
     initChat();
   }
-  // Si no, se inicializará cuando el componente se cargue mediante components.js
+  // Si no, s'inicialitzarà quan el component es carregui mitjançant components.js
 });
 
-// Exponer la función de inicialización globalmente
+// Exposa la funció d'inicialització globalment per poder-la cridar des d'altres scripts.
 window.initChat = initChat;

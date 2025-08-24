@@ -1,35 +1,35 @@
 /*---------------------------------------
- * 1. WIDGET DE CHAT (CONTENEDOR PRINCIPAL)
+* 1. WIDGET DE XAT (CONTENIDOR PRINCIPAL)
  *---------------------------------------*/
 .chat-widget {
-  /* Posicionamiento fijo en la esquina inferior derecha */
+  /* Posicionament fix a la cantonada inferior dreta */
   position: fixed;
   bottom: 20px;
   right: 20px;
   
-  /* Dimensiones del widget */
+  /* Dimensions del giny */
   width: 320px;
   height: 400px;
   
-  /* Apariencia visual - efecto de vidrio esmerilado */
+  /* Aparença visual - efecte de vidre esmerilat */
   backdrop-filter: blur(10px);
   background-color: var(--chat-background);
   border: 1px solid var(--window-border);
   border-radius: 6px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   
-  /* Layout del contenedor */
+  /* Disseny del contenidor */
   display: flex;
   flex-direction: column;
   
-  /* Controla la capa (encima de otros elementos) */
+  /* Controla la capa (per sobre d'altres elements) */
   z-index: 1001;
   
-  /* Animaciones suaves */
+  /* Animacions suaus */
   transition: transform 0.3s ease, height 0.3s ease, opacity 0.3s ease;
 }
 
-/* Estado minimizado - oculta el widget fuera de la pantalla */
+/* Estat minimitzat - amaga el widget fora de la pantalla */
 .chat-widget.minimized {
   transform: translateY(calc(100% + 20px));
   opacity: 0;
@@ -38,16 +38,16 @@
 
 
 /*---------------------------------------
- * 2. ENCABEZADO DEL CHAT
+ * 2. CAPÇALERA DEL XAT
  *---------------------------------------*/
 .chat-header {
-  /* Layout del encabezado */
+  /* Disseny de la capçalera */
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 8px 12px;
   
-  /* Línea divisoria inferior */
+  /* Línia divisòria inferior */
   border-bottom: 1px solid var(--window-border);
 }
 
@@ -56,51 +56,51 @@
 }
 
 /*---------------------------------------
- * 3. CUERPO DEL CHAT
+ * 3. COS DEL XAT
  *---------------------------------------*/
 .chat-body {
-  /* Ocupa el espacio restante */
+  /* Ocupa l'espai restant */
   flex: 1;
   
-  /* Layout vertical */
+  /* Disseny vertical */
   display: flex;
   flex-direction: column;
   
-  /* Evita desbordamiento */
+  /* Evita el desbordament */
   overflow: hidden;
 }
 
-/* Contenedor de mensajes con scroll */
+/* Contenidor de missatges amb scroll */
 .chat-messages {
-  flex: 1; /* Ocupa el espacio disponible */
+  flex: 1;
   padding: 12px;
-  overflow-y: auto; /* Permite desplazamiento vertical */
+  overflow-y: auto;
   
-  /* Layout de mensajes */
+  /* Disseny dels missatges */
   display: flex;
   flex-direction: column;
-  gap: 12px; /* Espacio entre mensajes */
+  gap: 12px; /* Espai entre missatges */
 }
 
 /*---------------------------------------
- * 4. ESTILOS DE MENSAJES
+ * 4. ESTILS DELS MISSATGES
  *---------------------------------------*/
 .message {
-  max-width: 80%; /* Ancho máximo de burbuja */
+  max-width: 80%;
   display: flex;
 }
 
-/* Mensaje del usuario (alineado a la derecha) */
+/* Missatge de l'usuari (alineat a la dreta) */
 .message.user {
   align-self: flex-end;
 }
 
-/* Mensaje del bot (alineado a la izquierda) */
+/* Missatge del bot (alineat a l'esquerra) */
 .message.bot {
   align-self: flex-start;
 }
 
-/* Estilos generales para contenido de mensajes */
+/* Estils generals per al contingut dels missatges */
 .message-content {
   padding: 8px 12px;
   border-radius: 12px;
@@ -108,15 +108,46 @@
   color: var(--text);
 }
 
-/* Estilo específico para mensajes del usuario */
+/* Estil específic per als missatges de l'usuari */
 .message.user .message-content {
-  background-color: var(--chat-message-user); /* Color anaranjado característico */
+  background-color: var(--chat-message-user);
   color: var(--text);
+}
+
+/* Indicador d'escriptura */
+.typing-indicator .typing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.typing-indicator .typing span {
+  height: 8px;
+  width: 8px;
+  margin: 0 2px;
+  background-color: #555;
+  border-radius: 50%;
+  display: inline-block;
+  animation: typing 1.4s ease-in-out infinite;
+  animation-fill-mode: both;
+}
+
+.typing-indicator .typing span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.typing-indicator .typing span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes typing {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
 }
 
 
 /*---------------------------------------
- * 5. ÁREA DE ENTRADA DE TEXTO
+ * 5. ÀREA D'ENTRADA DE TEXT
  *---------------------------------------*/
 .chat-input-container {
   display: flex;
@@ -124,9 +155,9 @@
   border-top: 1px solid var(--window-border);
 }
 
-/* Campo de entrada de texto */
+/* Camp d'entrada de text */
 .chat-input-container input {
-  flex: 1; /* Ocupa el espacio disponible */
+  flex: 1;
   padding: 8px 12px;
   border: 1px solid var(--window-border);
   border-radius: 20px; 
@@ -135,7 +166,7 @@
   outline: none;
 }
 
-/* Botón de enviar */
+/* Botó d'enviar */
 .chat-input-container button {
   background: none;
   border: none;
@@ -149,32 +180,32 @@
 
 
 /*---------------------------------------
- * 6. BOTÓN FLOTANTE DE CHAT (BURBUJA)
+ * 6. BOTÓ FLOTANT DE XAT (BUBBLE)
  *---------------------------------------*/
 .chat-bubble {
-  /* Posicionamiento fijo en esquina inferior derecha */
+  /* Posicionament fix a la cantonada inferior dreta */
   position: fixed;
   bottom: 20px;
   right: 20px;
   
-  /* Dimensiones y forma circular */
+  /* Dimensions i forma circular */
   width: 50px;
   height: 50px;
   border-radius: 50%;
   
-  /* Apariencia visual */
+  /* Aparença visual */
   background-color: var(--chat-bubble);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   border: none;
   
-  /* Centrado del ícono */
+  /* Centrat de la icona */
   display: flex;
   justify-content: center;
   align-items: center;
   
-  /* Interactividad */
+  /* Interactivitat */
   cursor: pointer;
-  z-index: 1000; /* Un nivel por debajo del chat */
+  z-index: 1000; /* Un nivell per sota del xat */
 }
 
 .chat-bubble svg {
@@ -187,7 +218,7 @@
 
 
 /*---------------------------------------
- * 7. CONTROLES DE VENTANA
+ * 7. CONTROLS DE FINESTRA
  *---------------------------------------*/
 .window-controls {
   display: flex;
@@ -195,7 +226,7 @@
   min-height: 24px;
 }
 
-/* Estilo base para botones de control */
+/* Estil base per als botons de control */
 .window-control {
   width: 20px !important;
   height: 20px !important;
@@ -210,16 +241,15 @@
   font-size: 16px;
   font-weight: bold;
   color: #333;
-  background-color: #f9ca24; /* Color amarillo para minimizar */
+  background-color: #f9ca24;
 }
 
-/* Botón específico para minimizar */
+/* Botó específic per minimitzar */
 .window-control.minimize {
   background-color: #f9ca24;
   position: relative;
 }
 
-/* Símbolo "-" dentro del botón minimizar */
 .window-control.minimize::after {
   content: "-";
   position: absolute;
@@ -232,11 +262,11 @@
 }
 
 /*---------------------------------------
- * 8. RESPONSIVIDAD
+ * 8. RESPONSIVITAT
  *---------------------------------------*/
 @media (max-width: 768px) {
   .chat-widget {
-    width: 300px; /* Ligeramente más pequeño en móviles */
+    width: 300px; /* Una mica més petit en mòbils */
     height: 350px;
   }
 }
