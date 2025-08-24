@@ -1,5 +1,5 @@
 // Importa les funcions necessàries des dels mòduls de l'API de Gemini i del comportament del xat.
-import { getGeminiResponse, resetChatHistory } from './geminiApi.js';
+import { initializeGemini, getGeminiResponse, resetChatHistory } from './geminiApi.js';
 import { welcomeMessage } from './geminiBehaviour.js';
 
 /**
@@ -14,6 +14,9 @@ function initChat() {
   const chatInput = document.getElementById('chat-input');
   const chatSend = document.getElementById('chat-send');
   const chatMessages = document.getElementById('chat-messages');
+
+  // Inicialitza la connexió amb l'API de Gemini.
+  initializeGemini();
 
   // Mostra el missatge de benvinguda inicial al xat.
   addMessage(welcomeMessage, 'bot');
