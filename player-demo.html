@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Singleton Demo - LinuxUPC</title>
+    <link rel="icon" href="./assets/img/linuxupc-logo.png">
+    <link rel="stylesheet" href="./assets/css/normalize.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <style>
+        .demo-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: var(--background-secondary, #2a2a2a);
+            border-radius: 8px;
+        }
+        .demo-section {
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: var(--background-tertiary, #1a1a1a);
+            border-radius: 4px;
+        }
+        .demo-section h3 {
+            margin-top: 0;
+            color: var(--text-primary, #fff);
+        }
+        .demo-section code {
+            background: #000;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #0f0;
+        }
+        .button-group {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+        .demo-button {
+            padding: 0.5rem 1rem;
+            background: var(--accent-color, #007bff);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .demo-button:hover {
+            opacity: 0.8;
+        }
+        .output {
+            background: #000;
+            color: #0f0;
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            min-height: 100px;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .info-box {
+            background: #004080;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+            border-left: 4px solid #0080ff;
+        }
+        .info-box h4 {
+            margin-top: 0;
+            color: #ffffff;
+        }
+        .player-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .player-stat {
+            background: #1a1a1a;
+            padding: 0.8rem;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .player-stat .label {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 0.3rem;
+        }
+        .player-stat .value {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #fff;
+        }
+    </style>
+</head>
+<body class="dark">
+    <header id="topbar">
+        <span class="left">
+            <img src="./assets/img/linuxupc-logo.png" alt="LinuxUPC">
+            <h1>Player Singleton Demo</h1>
+        </span>
+    </header>
+
+    <div class="demo-container">
+        <h2>Demostració del Patró Singleton amb la Classe Player</h2>
+        
+        <div class="info-box">
+            <h4>Què és el Patró Singleton?</h4>
+            <p>
+                El patró Singleton és un patró de disseny que assegura que una classe només tingui 
+                una instància i proporciona un punt d'accés global a aquesta instància. 
+                Això és útil quan exactament un objecte és necessari per coordinar accions a través del sistema.
+            </p>
+        </div>
+
+        <div class="demo-section">
+            <h3>Estat del Player</h3>
+            <div class="player-info">
+                <div class="player-stat">
+                    <div class="label">Nom</div>
+                    <div class="value" id="player-name">-</div>
+                </div>
+                <div class="player-stat">
+                    <div class="label">Puntuació</div>
+                    <div class="value" id="player-score">0</div>
+                </div>
+                <div class="player-stat">
+                    <div class="label">Nivell</div>
+                    <div class="value" id="player-level">1</div>
+                </div>
+                <div class="player-stat">
+                    <div class="label">Jugant</div>
+                    <div class="value" id="player-playing">No</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h3>Provar el Singleton</h3>
+            <div class="button-group">
+                <button class="demo-button" onclick="testSingleton()">Verificar Singleton</button>
+                <button class="demo-button" onclick="setPlayerName()">Establir Nom</button>
+                <button class="demo-button" onclick="addPoints()">Afegir Punts</button>
+                <button class="demo-button" onclick="levelUp()">Pujar Nivell</button>
+                <button class="demo-button" onclick="togglePlaying()">Iniciar/Parar</button>
+                <button class="demo-button" onclick="resetPlayer()">Reiniciar</button>
+                <button class="demo-button" onclick="clearOutput()">Netejar Sortida</button>
+            </div>
+            <div class="output" id="output">Fes clic als botons per provar el patró Singleton...</div>
+        </div>
+
+        <div class="info-box">
+            <h4>Característiques Clau</h4>
+            <ul>
+                <li><code>Player.getInstance()</code> sempre retorna la mateixa instància</li>
+                <li>No es pot crear una nova instància directament amb <code>new Player()</code></li>
+                <li>L'estat es comparteix entre totes les referències a la instància</li>
+                <li>La classe està congelada per prevenir modificacions</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="./assets/js/Player.js"></script>
+    <script>
+        function log(message) {
+            const output = document.getElementById('output');
+            const timestamp = new Date().toLocaleTimeString();
+            output.textContent += `[${timestamp}] ${message}\n`;
+            output.scrollTop = output.scrollHeight;
+        }
+
+        function updateDisplay() {
+            const player = Player.getInstance();
+            document.getElementById('player-name').textContent = player.getName() || '-';
+            document.getElementById('player-score').textContent = player.getScore();
+            document.getElementById('player-level').textContent = player.getLevel();
+            document.getElementById('player-playing').textContent = player.getIsPlaying() ? 'Sí' : 'No';
+        }
+
+        function testSingleton() {
+            const player1 = Player.getInstance();
+            const player2 = Player.getInstance();
+            
+            if (player1 === player2) {
+                log('✓ ÈXIT: player1 === player2 (mateix objecte)');
+            } else {
+                log('✗ ERROR: Les instàncies són diferents!');
+            }
+            
+            try {
+                const directPlayer = new Player();
+                log('✗ ERROR: No s\'hauria de permetre la creació directa!');
+            } catch (error) {
+                log('✓ ÈXIT: La creació directa està bloquejada');
+                log(`  Missatge d\'error: ${error.message}`);
+            }
+        }
+
+        function setPlayerName() {
+            const names = ['LinuxUPC', 'Tux', 'Penguin', 'OpenSource', 'FreeSoftware'];
+            const randomName = names[Math.floor(Math.random() * names.length)];
+            
+            const player = Player.getInstance();
+            player.setName(randomName);
+            log(`Nom establert a: ${randomName}`);
+            updateDisplay();
+        }
+
+        function addPoints() {
+            const points = Math.floor(Math.random() * 50) + 10;
+            const player = Player.getInstance();
+            player.addScore(points);
+            log(`+${points} punts! Total: ${player.getScore()}`);
+            updateDisplay();
+        }
+
+        function levelUp() {
+            const player = Player.getInstance();
+            player.setLevel(player.getLevel() + 1);
+            log(`Nivell augmentat a: ${player.getLevel()}`);
+            updateDisplay();
+        }
+
+        function togglePlaying() {
+            const player = Player.getInstance();
+            if (player.getIsPlaying()) {
+                player.stopPlaying();
+                log('Joc aturat');
+            } else {
+                player.startPlaying();
+                log('Joc iniciat');
+            }
+            updateDisplay();
+        }
+
+        function resetPlayer() {
+            const player = Player.getInstance();
+            player.reset();
+            log('Player reiniciat a l\'estat inicial');
+            updateDisplay();
+        }
+
+        function clearOutput() {
+            document.getElementById('output').textContent = '';
+            log('Sortida netejada');
+        }
+
+        // Initialize display
+        updateDisplay();
+        log('Player Singleton carregat i llest!');
+    </script>
+</body>
+</html>
