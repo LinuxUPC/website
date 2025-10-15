@@ -36,6 +36,9 @@ class Player {
    * @param {string} name - The player's name
    */
   setName(name) {
+    if (typeof name !== 'string') {
+      throw new TypeError('Name must be a string');
+    }
     this.name = name;
   }
 
@@ -52,6 +55,9 @@ class Player {
    * @param {number} score - The player's score
    */
   setScore(score) {
+    if (typeof score !== 'number' || isNaN(score)) {
+      throw new TypeError('Score must be a valid number');
+    }
     this.score = score;
   }
 
@@ -68,6 +74,9 @@ class Player {
    * @param {number} points - Points to add to the score
    */
   addScore(points) {
+    if (typeof points !== 'number' || isNaN(points)) {
+      throw new TypeError('Points must be a valid number');
+    }
     this.score += points;
   }
 
@@ -76,6 +85,9 @@ class Player {
    * @param {number} level - The player's level
    */
   setLevel(level) {
+    if (typeof level !== 'number' || isNaN(level) || level < 1) {
+      throw new TypeError('Level must be a positive number');
+    }
     this.level = level;
   }
 
