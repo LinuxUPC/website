@@ -1,0 +1,62 @@
+.window-component {
+    background: hsla(from var(--background-200) h s l / 60%);
+    font-size: clamp(1.25rem, 0.861rem + 1.78vw, 2rem);
+    width: 100%;
+    height: 100%;
+    border-radius: 0.2em;
+    position: relative;
+}
+
+.window-controls {
+    position: absolute;
+    top: 0.2em;
+    right: 0.2em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: start;
+    gap: 0.2em;
+}
+
+button {
+    border: 0;
+
+    &:hover{
+        border: 0;
+    }
+}
+
+.window-controls > button {
+    width: 0.6em;
+    height: 0.6em;
+    border-radius: 50%;
+    background: hsla(from var(--background-200) h s l / 90%);
+    transition: background 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.window-controls > button svg {
+    fill: var(--text);
+    stroke: var(--text);
+    width: 100%;
+    height: 100%;
+}
+
+button + .maximize-icon {
+    padding: 0.12em;
+}
+
+.window-controls > button + .close-icon {
+    background: var(--primary);
+}
+
+@media (hover: hover) {
+    .window-controls > button:hover {
+        background: var(--background-400);
+    }
+    .window-controls > button + .close-icon:hover {
+        background: var(--secondary);
+    }
+}

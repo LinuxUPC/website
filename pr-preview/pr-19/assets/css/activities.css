@@ -1,0 +1,145 @@
+main {
+    flex: 1;
+
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0.75rem;
+    gap: 0.75em;
+}
+
+h2 {
+    font-family: Ubuntu;
+    font-style: normal;
+    font-size: 1.5em;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.25em;
+}
+
+p {
+    font-family: Ubuntu;
+    font-style: normal;
+    font-size: 0.6em;
+    font-weight: 400;
+    letter-spacing: 0.75px;
+    line-height: 1.25em;
+    text-align: justify;
+}
+
+.activity-card {
+    position: relative;
+    font-size: clamp(1.25rem, 0.861rem + 1.78vw, 2rem);
+    padding: 0.8em;
+    padding-top: 1em;
+
+    .window-component {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+
+.content {
+    --max-width: 1200px;
+    --min-height: 20rem;
+
+    position: relative;
+    z-index: 1;
+
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    max-width: var(--max-width);
+    min-height: var(--min-height);
+    gap: 0.5em;
+}
+
+.carousel {
+    position: relative;
+    height: 100%;
+}
+
+.carousel-inner {
+    height: 100%;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 0.25em;
+    }
+}
+
+.carousel-inner > :not(.active) {
+    display: none;
+}
+
+
+/* 2) Mostrar los botones sólo si hay al menos 2 imágenes */
+.carousel:has(img:only-of-type) .prev,
+.carousel:has(img:only-of-type) .next {
+  display: none;
+}
+
+.carousel > button {
+    position: absolute;
+    margin: 0 0.20em;
+    top: 50%;
+    border-radius: 50%;
+    background-color: hsla(from var(--background-200) h s l / 50%);
+    padding: 0.1em 0.4em;
+    color: var(--text);
+    transform: translateY(-50%);
+    cursor: pointer;
+
+    &:is(.prev) {
+        left: 0;
+    }
+    
+    &:is(.next) {
+        right: 0;
+    }
+}
+
+.info {
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25em;
+}
+
+.info > span {
+    margin-left: 1em;
+}
+
+.info > a {
+    background-color: var(--primary);
+    border: 1px solid var(--text);
+    border-radius: 0.25em;
+    padding: 0.2em 0;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--text);
+}
+
+@media (hover: hover) {
+    .info > a:hover {
+        background-color: var(--secondary);
+    }
+}
+
+@media (max-width: 700px) {
+    .content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .carousel-inner{
+        height: 150px;
+    }
+}
