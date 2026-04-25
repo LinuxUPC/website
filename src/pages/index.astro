@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import MainTitle from "../components/MainTitle.astro";
+import HomeActivitiesSection from "../components/HomeActivitiesSection.astro";
+import AboutSection from "../components/AboutSection.astro";
+---
+
+<BaseLayout
+  title="LinuxUPC"
+  activeNav="home"
+  pageStyles={[
+    "/assets/css/index.css",
+    "/assets/css/components/title.css",
+    "/assets/css/components/about.css",
+    "/assets/css/components/activities.css",
+    "/assets/css/components/window.css"
+  ]}
+>
+  <main class="content">
+    <div class="row">
+      <MainTitle />
+    </div>
+    <div class="row">
+      <HomeActivitiesSection />
+      <AboutSection />
+    </div>
+  </main>
+</BaseLayout>

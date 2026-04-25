@@ -1,0 +1,98 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ActivitiesTitle from "../components/ActivitiesTitle.astro";
+import ActivityCard from "../components/ActivityCard.astro";
+---
+
+<BaseLayout
+  title="LinuxUPC - Activitats"
+  activeNav="activities"
+  pageStyles={[
+    "/assets/css/activities.css",
+    "/assets/css/components/title.css",
+    "/assets/css/components/window.css"
+  ]}
+>
+  <main>
+    <ActivitiesTitle />
+
+    <ActivityCard
+      id="install-party-2025"
+      title="📌 Install Party 2025"
+      images={[
+        {
+          src: "/assets/img/Cartell_InstallParty2025v2.jpg",
+          alt: "Install Party 2025 cartell de promoció"
+        }
+      ]}
+      paragraphs={[
+        "Estàs preparat per fer el salt al món del programari lliure? Et convidem a la nostra pròxima <strong>Install Party</strong>, una jornada on t'ajudarem a instal·lar Linux al teu portàtil i a fer els teus primers passos en aquest sistema operatiu de codi obert.🐧",
+        "Durant l'esdeveniment, et guiarem pas a pas en el procés d'instal·lació, resolent tots els teus dubtes i oferint suport perquè puguis configurar el teu sistema de manera òptima. A més, t'introduirem als conceptes bàsics de Linux, la seva estructura i les eines essencials perquè comencis a treballar-hi amb total confiança.",
+        "Aquesta és una gran oportunitat per conèixer gent amb els teus mateixos interessos, compartir experiències i descobrir el potencial de Linux en un ambient col·laboratiu i dinàmic. 🎉",
+        "Esperem veure't en aquesta nova edició i seguir explorant junts el món del programari lliure! 🚀"
+      ]}
+      date="📅 <strong>Data:</strong> Dimecres 17 de Setembre, 2025"
+      duration="⌛ <strong>Durada:</strong> 1h (per sessió)"
+      intervals={[
+        { label: "1️⃣ Primer Interval", time: "8:00 - 11:00", location: "A5E02" },
+        { label: "2️⃣ Segon Interval", time: "11:00 - 12:00", location: "A5104" },
+        { label: "3️⃣ Tercer Interval", time: "12:00 - 20:00", location: "A5E02" }
+      ]}
+      cta={{ href: "https://t.co/L4CnobBQsz", label: "Inscriu-te aquí!" }}
+    />
+
+    <ActivityCard
+      id="git-workshop-2025"
+      title="📌 Git Workshop"
+      images={[
+        {
+          src: "/assets/img/git_workshop.jpg",
+          alt: "Workshop de git 2025 cartell de promoció"
+        }
+      ]}
+      paragraphs={[
+        "El passat 26 de febrer de 2025 vam celebrar el nostre <strong>Workshop de Git</strong>, un taller pràctic on vam aprendre a gestionar versions de manera eficient amb Git i a col·laborar en projectes a GitHub sense el caos dels arxius. 😜",
+        "Durant la sessió, els participants van explorar els conceptes clau de Git, des dels <strong>commits</strong> fins als <strong>branches</strong>, passant per els <strong>merges</strong> i les <strong>pull requests</strong>. A través d'exemples reals i exercicis guiats, vam posar en pràctica aquestes eines fonamentals per al desenvolupament col·laboratiu.",
+        "Va ser una gran oportunitat per resoldre dubtes en directe, compartir experiències i, sobretot, perdre la por a Git! 🎉",
+        "Gràcies a tots els assistents per la vostra participació i entusiasme! Esperem veure-us en els pròxims tallers. 🚀"
+      ]}
+      date="📅 <strong>Data:</strong> <del>26 de Febrer, 2025</del> (Finalitzat)"
+      time="🕛 <strong>Hora:</strong> 12:00"
+      duration="⌛ <strong>Durada:</strong> 2h"
+      location="📍 <strong>Lloc:</strong> A5001"
+    />
+
+    <ActivityCard
+      id="install-party-2024"
+      title="📌 Install Party 2024"
+      images={[
+        {
+          src: "/assets/img/install-party-2025-1.jpg",
+          alt: "Install Party 2024 foto 1 de l'esdeveniment"
+        },
+        {
+          src: "/assets/img/install-party-2025-2.jpg",
+          alt: "Install Party 2024 foto 2 de l'esdeveniment"
+        },
+        {
+          src: "/assets/img/install-party-2025-3.jpg",
+          alt: "Install Party 2024 foto 3 de l'esdeveniment"
+        }
+      ]}
+      paragraphs={[
+        "El passat 18 de setembre de 2024 vam celebrar la nostra <strong>Install Party</strong>, una jornada on vam ajudar als participants a instal·lar Linux als seus portàtils i a fer els primers passos en aquest sistema operatiu lliure i de codi obert.🐧",
+        "Durant la sessió, vam guiar als assistents en el procés d'instal·lació, responent dubtes i oferint suport perquè poguessin configurar el seu sistema de manera òptima. A més, vam introduir-los als conceptes bàsics de Linux, la seva estructura i les eines fonamentals per començar a treballar amb ell amb confiança.",
+        "Va ser una gran oportunitat per conèixer gent amb els mateixos interessos, compartir experiències i descobrir el potencial de Linux en un ambient col·laboratiu i dinàmic. 🎉",
+        "Gràcies a tots els que vau participar! Esperem veure-us en els pròxims esdeveniments i que seguiu explorant el món del programari lliure. 🚀"
+      ]}
+      date="📅 <strong>Data:</strong> <del>18 de Setembre, 2024</del> (Finalitzat)"
+      duration="⌛ <strong>Durada:</strong> 1h (per sessió)"
+      intervals={[
+        { label: "1️⃣ Primer Interval", time: "10:00 - 15:00", location: "A6104" },
+        { label: "2️⃣ Segon Interval", time: "15:00 - 19:00", location: "A6105" }
+      ]}
+    />
+  </main>
+
+  <script is:inline src="/assets/js/carrousel.js"></script>
+</BaseLayout>

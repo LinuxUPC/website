@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+.pnpm-store/
+package-lock.json
+.DS_Store
+.idea/
+.vscode-test/
+*.log
+*.env
+.codex

@@ -1,0 +1,61 @@
+---
+import WindowFrame from "./WindowFrame.astro";
+
+interface Interval {
+  label: string;
+  time: string;
+  location: string;
+}
+
+interface Props {
+  id: string;
+  title: string;
+  images: { src: string; alt: string }[];
+  paragraphs: string[];
+  date: string;
+  time?: string;
+  duration: string;
+  location?: string;
+  intervals?: Interval[];
+  cta?: { href: string; label: string };
+}
+
+const { id, title, images, paragraphs, date, time, duration, location, intervals = [], cta } = Astro.props;
+---
+
+<div id={id} class="activity-card">
+  <WindowFrame />
+  <div class="content">
+    <div class="carousel">
+      <div class="carousel-inner">
+        {images.map((image, index) => (
+          <img class:list={{ active: index === 0 }} src={image.src} alt={image.alt} />
+        ))}
+      </div>
+      <button class="prev" type="button">&#10094;</button>
+      <button class="next" type="button">&#10095;</button>
+    </div>
+    <div class="info">
+      <h3>{title}</h3>
+      {paragraphs.map((paragraph) => <p set:html={paragraph}></p>)}
+      <p set:html={date}></p>
+      {time && <p set:html={time}></p>}
+      <p set:html={duration}></p>
+      {location && <p set:html={location}></p>}
+      {intervals.map((interval) => (
+        <>
+          <p>{interval.label}</p>
+          <span>
+            <p>🕛 <strong>Hora:</strong> {interval.time}</p>
+            <p>📍 <strong>Lloc:</strong> {interval.location}</p>
+          </span>
+        </>
+      ))}
+      {cta && (
+        <a href={cta.href} target="_blank" rel="noreferrer" class="button">
+          {cta.label}
+        </a>
+      )}
+    </div>
+  </div>
+</div>

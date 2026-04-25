@@ -2,43 +2,52 @@
 
 This is the website of LinuxUPC, a community at the UPC dedicated to Free Software.
 
+## Stack
+
+- Astro 6
+- pnpm
+- Static output
+- Public assets under `public/assets`
+
 ## Project Structure
 
-The project is organized as follows:
+- `src/layouts/`: Shared Astro layouts.
+- `src/components/`: Reusable Astro components.
+- `src/pages/`: Site pages, including `activities.astro`, which builds to `activities.html`.
+- `public/assets/`: Images, CSS and JavaScript served as static files.
+- `public/CNAME`: Custom domain configuration for GitHub Pages.
 
-- `assets/css/`: Contains CSS files.
-- `assets/js/`: Contains JavaScript files.
-- `assets/fonts`: Contains the font files.
-- `assets/icons/`: Contains icon files used in the project.
-- `assets/img/`: Contains image files used in the project.
-- `components/`: Contains HTML files for components.
-- `index.html`: The main page and the entry point of the website.
+## Development
 
-## Running the Project Locally
-
-To avoid issues with `fetch` and `file://`, the project should be served from a local server. Here are some options:
-
-### Using Python
+Install dependencies:
 
 ```sh
-python -m http.server 8000
+pnpm install
 ```
 
-### Using Node.js
+Start the local dev server:
 
 ```sh
-npx http-server -p 8000
+pnpm dev
 ```
 
-### Using PHP
+Build the static site:
 
 ```sh
-php -S localhost:8000
+pnpm build
 ```
 
-## Contributing
+Preview the production build locally:
 
-Contributions are welcome! Feel free to open an issue or submit a pull request.
+```sh
+pnpm preview
+```
+
+## Deployment Notes
+
+- The site is built as static files and can be published on GitHub Pages.
+- The custom domain is preserved through `public/CNAME`.
+- PR previews should publish the generated `dist/` directory instead of the repository root.
 
 ## License
 
