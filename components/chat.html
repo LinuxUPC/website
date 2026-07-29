@@ -1,0 +1,28 @@
+<!-- Chat widget component -->
+<div id="chat-widget" class="chat-widget minimized">
+  <div class="chat-header window-header">
+    <span class="window-title">LinuxUPC Assistant</span>
+    <div class="window-controls">
+      <button id="chat-minimize" class="window-control minimize"></button>
+    </div>
+  </div>
+  <div class="chat-body">
+    <div id="chat-messages" class="chat-messages">
+      <!-- Messages will be appended here -->
+    </div>
+    <div class="chat-input-container">
+      <input type="text" id="chat-input" placeholder="Escribe tu pregunta aquí..." />
+      <button id="chat-send">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+          <path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<button id="chat-bubble" class="chat-bubble">
+  <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+    <path d="M240-400h320v-80H240v80Zm0-120h480v-80H240v80Zm0-120h480v-80H240v80ZM80-80v-720q0-33 23.5-56.5T160-880h640q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H240L80-80Zm126-240h594v-480H160v525l46-45Zm-46 0v-480 480Z"  />
+  </svg>
+</button>

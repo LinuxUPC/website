@@ -40,6 +40,15 @@ php -S localhost:8000
 
 Contributions are welcome! Feel free to open an issue or submit a pull request.
 
+### Virtual Assistant Configuration
+
+To modify the virtual assistant's personalized information (such as event dates, specific knowledge, etc.), you need to edit the `context` variable in the file:
+
+`assets/js/geminiBehaviour.js`
+
+This variable contains the initial instructions that define the assistant's personality and knowledge base.
+
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).

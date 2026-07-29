@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="assets/css/components/about.css">
         <link rel="stylesheet" href="assets/css/components/activities.css">
         <link rel="stylesheet" href="assets/css/components/window.css">
+        <link rel="stylesheet" href="assets/css/components/chat.css">
       </head>
     <body class="dark">
       <!-- Barra superior -->
@@ -72,8 +73,23 @@
         </main>
       </div>
 
+      <!-- Chat -->
+      <div class="chat-component"></div>
+
+
+      <!-- Scripts -->
       <script src="assets/js/components.js"></script>
       <script src="assets/js/colorMode.js"></script>
       <script src="assets/js/topbar.js"></script>
+      <script type="importmap">
+        {
+          "imports": {
+            "@google/generative-ai": "https://esm.run/@google/generative-ai",
+            "crypto-js": "https://esm.run/crypto-js"
+          }
+        }
+      </script>
+      <script src="assets/js/chat.js" type="module"></script>
+
     </body>
 </html>

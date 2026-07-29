@@ -18,6 +18,12 @@
   --primary: hsl(16, 93%, 59%);
   --secondary: hsl(16, 96%, 72%);
   --accent: hsl(306, 41%, 45%);
+
+  --chat-bubble: rgba(255, 255, 255, 0.3);
+  --chat-background: rgba(220, 220, 220, 0.95);
+  --chat-message-bot: rgb(180, 180, 180);
+  --chat-message-user: rgb(235, 156, 60);
+  --chat-input: rgb(255, 255, 255);
 }
 
 .dark {
@@ -38,6 +44,12 @@
   --primary: hsl(16, 97%, 59%);
   --secondary: hsl(15, 100%, 68%);
   --accent: hsl(306, 57%, 70%);
+
+  --chat-bubble: rgba(0, 0, 0, 0.3);
+  --chat-background: rgba(30, 30, 30, 0.95);
+  --chat-message-bot: rgb(70, 70, 70);
+  --chat-message-user: rgb(235, 156, 60);
+  --chat-input: rgb(0, 0, 0);
 }
 
 /* Reseteo básico */
